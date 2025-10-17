@@ -1,0 +1,17 @@
+{
+  "name": "AceStayz - Premium Accommodation",
+  "short_name": "AceStayz",
+  "description": "Premium hotels and homestays for intelligent travelers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FCD34D",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
