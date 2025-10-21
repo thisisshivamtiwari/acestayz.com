@@ -21,7 +21,8 @@ const HeroSection: React.FC = () => {
         <div 
           className="w-full h-full bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670')`
+            //backgroundImage: `url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1586611292717-f828b167408c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2274')`
           }}
         ></div>
       </div>
@@ -36,7 +37,7 @@ const HeroSection: React.FC = () => {
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="block">Premium</span>
                 <span className="block">Accommodation,</span>
-                <span className="block text-yellow-400">hello acestayz</span>
+                <span className="block" style={{color: '#4B9CD3'}}>hello acestayz</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-2xl">
@@ -69,11 +70,11 @@ const HeroSection: React.FC = () => {
                     value={searchQuery}
                     onChange={handleSearchChange}
                     placeholder="Book a Stay in Delhi, Noida, Gurugram..."
-                    className="w-full pl-12 pr-4 py-4 text-lg bg-white/95 backdrop-blur-sm border-0 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:bg-white transition-all duration-300 shadow-2xl"
+                    className="w-full pl-12 pr-4 py-4 text-lg bg-white/95 backdrop-blur-sm border-0 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:bg-white transition-all duration-300 shadow-2xl" style={{'--tw-ring-color': '#4B9CD3'} as React.CSSProperties}
                   />
                   <button
                     type="submit"
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-2 rounded-xl font-semibold transition-colors duration-200"
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white px-6 py-2 rounded-xl font-semibold transition-colors duration-200" style={{backgroundColor: '#4B9CD3'}} onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#001a4d'} onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#4B9CD3'}
                   >
                     Search
                   </button>
@@ -82,7 +83,7 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* Call to Action */}
-            <div className="flex items-center space-x-2 text-yellow-400">
+            <div className="flex items-center space-x-2" style={{color: '#4B9CD3'}}>
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
               </svg>
@@ -92,15 +93,15 @@ const HeroSection: React.FC = () => {
             {/* Quick Stats */}
             <div className="flex flex-wrap gap-8 pt-4">
               <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-400">6+</div>
+                <div className="text-3xl font-bold" style={{color: '#4B9CD3'}}>6+</div>
                 <div className="text-sm text-gray-300">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-400">500+</div>
+                <div className="text-3xl font-bold" style={{color: '#4B9CD3'}}>500+</div>
                 <div className="text-sm text-gray-300">Happy Guests</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-400">15+</div>
+                <div className="text-3xl font-bold" style={{color: '#4B9CD3'}}>15+</div>
                 <div className="text-sm text-gray-300">Prime Locations</div>
               </div>
             </div>
@@ -121,8 +122,8 @@ const HeroSection: React.FC = () => {
                 <h3 className="text-white font-semibold text-lg mb-2">Luxury Suite - Noida</h3>
                 <p className="text-gray-300 text-sm mb-4">Premium 3BHK with modern amenities</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-yellow-400 font-bold text-xl">₹4,999/night</span>
-                  <button className="bg-yellow-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition-colors">
+                  <span className="font-bold text-xl" style={{color: '#4B9CD3'}}>₹4,999/night</span>
+                  <button className="text-white px-4 py-2 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#4B9CD3'}} onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#001a4d'} onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#4B9CD3'}>
                     Book Now
                   </button>
                 </div>
@@ -139,8 +140,8 @@ const HeroSection: React.FC = () => {
                 <h3 className="text-white font-semibold text-lg mb-2">Studio Apartment - Delhi</h3>
                 <p className="text-gray-300 text-sm mb-4">Cozy studio with city view</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-yellow-400 font-bold text-xl">₹2,999/night</span>
-                  <button className="bg-yellow-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition-colors">
+                  <span className="font-bold text-xl" style={{color: '#4B9CD3'}}>₹2,999/night</span>
+                  <button className="text-white px-4 py-2 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#4B9CD3'}} onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#001a4d'} onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#4B9CD3'}>
                     Book Now
                   </button>
                 </div>
