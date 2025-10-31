@@ -1,13 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomePage from '../pages/HomePage'
+import HotelDetailPage from '../pages/HotelDetailPage'
 
 const AppRouter: React.FC = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* Add more routes here as needed */}
+        <Route path="/hotel/:slug" element={<HotelDetailPage />} />
       </Routes>
     </Router>
   )

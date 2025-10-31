@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 type Hotel = {
   id: number
@@ -65,6 +66,8 @@ const HotelShowcase: React.FC = () => {
     setIsPaused(false)
   }
 
+  const navigate = useNavigate()
+  const goDetail = () => navigate('/hotel/karol-bagh')
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 py-16 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -128,7 +131,7 @@ const HotelShowcase: React.FC = () => {
                   {/* Top Row */}
                   <div className="grid grid-cols-4 gap-8 mb-8">
                     {hotels.slice(slideIndex * 8, slideIndex * 8 + 4).map((hotel) => (
-                      <div key={hotel.id} className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                      <div onClick={goDetail} role="link" tabIndex={0} key={hotel.id} className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group border border-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300">
                         <div className="h-52 overflow-hidden">
                           <img 
                             src={hotel.image} 
@@ -150,7 +153,7 @@ const HotelShowcase: React.FC = () => {
                   {/* Bottom Row */}
                   <div className="grid grid-cols-4 gap-8">
                     {hotels.slice(slideIndex * 8 + 4, slideIndex * 8 + 8).map((hotel) => (
-                      <div key={hotel.id} className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                      <div onClick={goDetail} role="link" tabIndex={0} key={hotel.id} className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group border border-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300">
                         <div className="h-52 overflow-hidden">
                           <img 
                             src={hotel.image} 
