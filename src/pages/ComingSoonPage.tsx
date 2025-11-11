@@ -77,7 +77,7 @@ const ComingSoonPage = () => {
             </div>
 
             {/* CTA Button */}
-            <div className="mt-12">
+            {/* <div className="mt-12">
               <a
                 href="mailto:info@acestayz.com"
                 className="btn-gold-dust inline-flex items-center justify-center rounded-xl px-8 py-4 font-semibold text-charcoal shadow-lg text-base sm:text-lg"
@@ -92,7 +92,7 @@ const ComingSoonPage = () => {
               >
                 Notify Me
               </a>
-            </div>
+            </div> */}
 
             {/* Additional Emotional Line */}
             <p className="mt-8 text-sm sm:text-base text-charcoal/60 font-serif italic">
