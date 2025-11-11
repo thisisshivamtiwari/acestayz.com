@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Footer from '../components/Footer'
+// import Footer from '../components/Footer'
 
 const ComingSoonPage = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -102,7 +102,7 @@ const ComingSoonPage = () => {
         </div>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

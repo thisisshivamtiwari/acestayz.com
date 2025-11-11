@@ -320,9 +320,9 @@ const Footer: React.FC = () => {
                 Blog & Buzz
               </a>
             </div>
-            <div className="text-sm text-cream/80 font-sans">
+            {/* <div className="text-sm text-cream/80 font-sans">
               Imperativ Hospitality Pvt Ltd
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
