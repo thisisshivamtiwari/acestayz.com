@@ -23,6 +23,15 @@
   }
 }
 
+@keyframes marbled-transition {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 .animate-fade-in-up {
   animation: fade-in-up 0.8s ease-out forwards;
   opacity: 0;
@@ -30,4 +39,97 @@
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+/* Terracotta & Cream Harmony Theme Styles */
+
+/* Terracotta Clay Texture Background */
+.bg-terracotta-texture {
+  background-color: #A0523D;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(139, 69, 53, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(160, 82, 61, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(139, 69, 53, 0.2) 0%, transparent 50%);
+  background-size: 200% 200%, 150% 150%, 180% 180%;
+  background-position: 0% 0%, 100% 100%, 50% 50%;
+  animation: marbled-transition 15s ease infinite;
+}
+
+/* Cream Fabric Grain Texture */
+.bg-cream-texture {
+  background-color: #F5F0E6;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(245, 240, 230, 0.5) 2px,
+      rgba(245, 240, 230, 0.5) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(250, 245, 235, 0.3) 2px,
+      rgba(250, 245, 235, 0.3) 4px
+    );
+  background-size: 100% 100%, 100% 100%;
+}
+
+/* Marbled Gradient Transition */
+.marbled-gradient {
+  background: linear-gradient(
+    135deg,
+    #F5F0E6 0%,
+    #EEC9C5 25%,
+    #F5F0E6 50%,
+    #EEC9C5 75%,
+    #F5F0E6 100%
+  );
+  background-size: 200% 200%;
+  animation: marbled-transition 8s ease infinite;
+}
+
+/* Button Hover Texture Effect */
+.btn-gold-dust {
+  background-color: #D4AF37;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold-dust::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(238, 201, 197, 0.4) 0%, transparent 70%);
+  transition: left 0.5s ease;
+}
+
+.btn-gold-dust:hover {
+  background-color: #EEC9C5;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(238, 201, 197, 0.4);
+}
+
+.btn-gold-dust:hover::before {
+  left: 100%;
+}
+
+/* Text Shadow for Serif Headings */
+.text-serif-elegant {
+  font-family: Georgia, 'Times New Roman', serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(51, 51, 51, 0.1);
+}
+
+/* Gold Dust Highlight Text */
+.text-gold-highlight {
+  color: #D4AF37;
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', serif;
 }

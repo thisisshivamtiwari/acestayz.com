@@ -1,48 +1,103 @@
-// import Navigation from '../components/Navigation'
+import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 
 const ComingSoonPage = () => {
-  return (
-    <div className="min-h-screen flex flex-col" style={{ background: 'linear-gradient(180deg, #4B9CD3 0%, #FFFFFF 100%)' }}>
-      {/* <Navigation /> */}
+  const [isVisible, setIsVisible] = useState(false)
 
-      <main className="flex-1 flex items-center justify-center px-4 py-16">
-        <div className="max-w-4xl w-full text-center">
-          <div className="mx-auto max-w-2xl backdrop-blur-md bg-white/40 border border-white/60 shadow-xl rounded-3xl p-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold" style={{ backgroundColor: '#E6F1FA', color: '#4B9CD3' }}>
-              Under Maintenance
+  useEffect(() => {
+    setIsVisible(true)
+  }, [])
+
+  return (
+    <div className="min-h-screen flex flex-col bg-cream-texture">
+      <main className="flex-1 flex items-center justify-center px-4 py-16 relative overflow-hidden">
+        {/* Marbled gradient transition overlay */}
+        <div className="absolute inset-0 marbled-gradient opacity-30 pointer-events-none" />
+        
+        <div className="max-w-5xl w-full text-center relative z-10">
+          <div 
+            className={`mx-auto max-w-3xl bg-cream-texture border-2 border-terracotta/20 shadow-2xl rounded-3xl p-8 sm:p-12 transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-terracotta/10 border border-terracotta/30 text-terracotta">
+              <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
+              Crafting Your Perfect Stay
             </div>
-            <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold" style={{ color: '#012365' }}>
-              Something delightful is cooking
+
+            {/* Main Heading */}
+            <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl font-bold text-serif-elegant text-charcoal leading-tight">
+              Something Delightful<br />
+              <span className="text-terracotta">Is Cooking</span>
             </h1>
-            <p className="mt-4 text-gray-700 text-base sm:text-lg">
-              We’re crafting a better AceStayz experience. Check back soon for a beautiful new way to book your stay.
+
+            {/* Emotional Microcopy */}
+            <p className="mt-6 text-charcoal/80 text-base sm:text-lg md:text-xl font-sans leading-relaxed max-w-2xl mx-auto">
+              We're crafting a better AceStayz experience—<span className="text-gold-highlight">wrapped in warmth, styled with soul.</span>
+            </p>
+            <p className="mt-3 text-charcoal/70 text-sm sm:text-base font-sans italic">
+              Crafted for your moments of togetherness.
             </p>
 
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="rounded-2xl p-4 bg-white shadow-sm border border-gray-100">
-                <div className="text-sm font-semibold" style={{ color: '#4B9CD3' }}>Smooth booking</div>
-                <div className="text-gray-600 text-sm mt-1">Faster, simpler, smarter</div>
+            {/* Feature Cards */}
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+              <div className={`rounded-2xl p-6 bg-cream border-2 border-terracotta/10 shadow-md hover:shadow-xl hover:border-terracotta/30 transition-all duration-300 ${
+                isVisible ? 'animate-fade-in-up' : ''
+              }`} style={{ animationDelay: '0.1s' }}>
+                <div className="text-base font-semibold text-terracotta font-serif mb-2">
+                  Smooth Booking
+                </div>
+                <div className="text-charcoal/70 text-sm font-sans">
+                  Faster, simpler, smarter
+                </div>
               </div>
-              <div className="rounded-2xl p-4 bg-white shadow-sm border border-gray-100">
-                <div className="text-sm font-semibold" style={{ color: '#4B9CD3' }}>Exclusive offers</div>
-                <div className="text-gray-600 text-sm mt-1">Best rates direct</div>
+              
+              <div className={`rounded-2xl p-6 bg-cream border-2 border-terracotta/10 shadow-md hover:shadow-xl hover:border-terracotta/30 transition-all duration-300 ${
+                isVisible ? 'animate-fade-in-up' : ''
+              }`} style={{ animationDelay: '0.2s' }}>
+                <div className="text-base font-semibold text-terracotta font-serif mb-2">
+                  Exclusive Offers
+                </div>
+                <div className="text-charcoal/70 text-sm font-sans">
+                  Best rates direct
+                </div>
               </div>
-              <div className="rounded-2xl p-4 bg-white shadow-sm border border-gray-100">
-                <div className="text-sm font-semibold" style={{ color: '#4B9CD3' }}>Modern design</div>
-                <div className="text-gray-600 text-sm mt-1">Clean & intuitive UI</div>
+              
+              <div className={`rounded-2xl p-6 bg-cream border-2 border-terracotta/10 shadow-md hover:shadow-xl hover:border-terracotta/30 transition-all duration-300 ${
+                isVisible ? 'animate-fade-in-up' : ''
+              }`} style={{ animationDelay: '0.3s' }}>
+                <div className="text-base font-semibold text-terracotta font-serif mb-2">
+                  Premium Comfort
+                </div>
+                <div className="text-charcoal/70 text-sm font-sans">
+                  Where celebrations find their perfect stay
+                </div>
               </div>
             </div>
 
-            <div className="mt-10">
+            {/* CTA Button */}
+            <div className="mt-12">
               <a
                 href="mailto:info@acestayz.com"
-                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold text-white shadow-md hover:opacity-95 transition"
-                style={{ backgroundColor: '#4B9CD3' }}
+                className="btn-gold-dust inline-flex items-center justify-center rounded-xl px-8 py-4 font-semibold text-charcoal shadow-lg text-base sm:text-lg"
+                tabIndex={0}
+                aria-label="Notify me when AceStayz launches"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    window.location.href = 'mailto:info@acestayz.com'
+                  }
+                }}
               >
-                Notify me
+                Notify Me
               </a>
             </div>
+
+            {/* Additional Emotional Line */}
+            <p className="mt-8 text-sm sm:text-base text-charcoal/60 font-serif italic">
+              Where celebrations find their perfect stay.
+            </p>
           </div>
         </div>
       </main>
