@@ -8,7 +8,7 @@ const AppRouter: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<ComingSoonPage />} />
         <Route path="/comingsoon" element={<ComingSoonPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/hotel/:slug" element={<HotelDetailPage />} />
