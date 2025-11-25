@@ -9,68 +9,68 @@ const ComingSoonPage = () => {
   }, [])
 
   return (
-    <div className="min-h-screen flex flex-col bg-cream-texture">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <main className="flex-1 flex items-center justify-center px-4 py-16 relative overflow-hidden">
-        {/* Marbled gradient transition overlay */}
-        <div className="absolute inset-0 marbled-gradient opacity-30 pointer-events-none" />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50 pointer-events-none" />
         
         <div className="max-w-5xl w-full text-center relative z-10">
           <div 
-            className={`mx-auto max-w-3xl bg-cream-texture border-2 border-terracotta/20 shadow-2xl rounded-3xl p-8 sm:p-12 transition-all duration-1000 ${
+            className={`mx-auto max-w-3xl bg-white border-2 border-blue-200 shadow-2xl rounded-3xl p-8 sm:p-12 transition-all duration-1000 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-terracotta/10 border border-terracotta/30 text-terracotta">
-              <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-blue-50 border border-blue-300" style={{ color: '#4B9CD3' }}>
+              <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#4B9CD3' }} />
               Crafting Your Perfect Stay
             </div>
 
             {/* Main Heading */}
-            <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl font-bold text-serif-elegant text-charcoal leading-tight">
+            <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl font-bold text-serif-elegant text-gray-900 leading-tight">
               Something Delightful<br />
-              <span className="text-terracotta">Is Cooking</span>
+              <span style={{ color: '#4B9CD3' }}>Is Cooking</span>
             </h1>
 
             {/* Emotional Microcopy */}
-            <p className="mt-6 text-charcoal/80 text-base sm:text-lg md:text-xl font-sans leading-relaxed max-w-2xl mx-auto">
-              We're crafting a better AceStayz experience—<span className="text-gold-highlight">wrapped in warmth, styled with soul.</span>
+            <p className="mt-6 text-gray-700 text-base sm:text-lg md:text-xl font-sans leading-relaxed max-w-2xl mx-auto">
+              We're crafting a better AceStayz experience—<span style={{ color: '#4B9CD3' }}>wrapped in warmth, styled with soul.</span>
             </p>
-            <p className="mt-3 text-charcoal/70 text-sm sm:text-base font-sans italic">
+            <p className="mt-3 text-gray-600 text-sm sm:text-base font-sans italic">
               Crafted for your moments of togetherness.
             </p>
 
             {/* Feature Cards */}
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-              <div className={`rounded-2xl p-6 bg-cream border-2 border-terracotta/10 shadow-md hover:shadow-xl hover:border-terracotta/30 transition-all duration-300 ${
+              <div className={`rounded-2xl p-6 bg-white border-2 border-blue-200 shadow-md hover:shadow-xl hover:border-blue-300 transition-all duration-300 ${
                 isVisible ? 'animate-fade-in-up' : ''
               }`} style={{ animationDelay: '0.1s' }}>
-                <div className="text-base font-semibold text-terracotta font-serif mb-2">
+                <div className="text-base font-semibold font-serif mb-2" style={{ color: '#4B9CD3' }}>
                   Smooth Booking
                 </div>
-                <div className="text-charcoal/70 text-sm font-sans">
+                <div className="text-gray-600 text-sm font-sans">
                   Faster, simpler, smarter
                 </div>
               </div>
               
-              <div className={`rounded-2xl p-6 bg-cream border-2 border-terracotta/10 shadow-md hover:shadow-xl hover:border-terracotta/30 transition-all duration-300 ${
+              <div className={`rounded-2xl p-6 bg-white border-2 border-blue-200 shadow-md hover:shadow-xl hover:border-blue-300 transition-all duration-300 ${
                 isVisible ? 'animate-fade-in-up' : ''
               }`} style={{ animationDelay: '0.2s' }}>
-                <div className="text-base font-semibold text-terracotta font-serif mb-2">
+                <div className="text-base font-semibold font-serif mb-2" style={{ color: '#4B9CD3' }}>
                   Exclusive Offers
                 </div>
-                <div className="text-charcoal/70 text-sm font-sans">
+                <div className="text-gray-600 text-sm font-sans">
                   Best rates direct
                 </div>
               </div>
               
-              <div className={`rounded-2xl p-6 bg-cream border-2 border-terracotta/10 shadow-md hover:shadow-xl hover:border-terracotta/30 transition-all duration-300 ${
+              <div className={`rounded-2xl p-6 bg-white border-2 border-blue-200 shadow-md hover:shadow-xl hover:border-blue-300 transition-all duration-300 ${
                 isVisible ? 'animate-fade-in-up' : ''
               }`} style={{ animationDelay: '0.3s' }}>
-                <div className="text-base font-semibold text-terracotta font-serif mb-2">
+                <div className="text-base font-semibold font-serif mb-2" style={{ color: '#4B9CD3' }}>
                   Premium Comfort
                 </div>
-                <div className="text-charcoal/70 text-sm font-sans">
+                <div className="text-gray-600 text-sm font-sans">
                   Where celebrations find their perfect stay
                 </div>
               </div>
@@ -95,7 +95,7 @@ const ComingSoonPage = () => {
             </div> */}
 
             {/* Additional Emotional Line */}
-            <p className="mt-8 text-sm sm:text-base text-charcoal/60 font-serif italic">
+            <p className="mt-8 text-sm sm:text-base text-gray-500 font-serif italic">
               Where celebrations find their perfect stay.
             </p>
           </div>

@@ -13,10 +13,10 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="bg-terracotta-texture text-cream relative overflow-hidden">
+    <footer className="text-white relative overflow-hidden" style={{ backgroundColor: '#4B9CD3' }}>
       {/* Subtle texture overlay */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cream/5 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent" />
       </div>
 
       {/* Main Footer Content */}
@@ -26,18 +26,18 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <div className="flex items-center mb-6">
-              <div className="w-10 h-10 bg-gold-dust rounded-lg flex items-center justify-center mr-3 shadow-lg">
-                <span className="text-charcoal font-bold text-xl font-serif">A</span>
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center mr-3 shadow-lg">
+                <span className="font-bold text-xl font-serif" style={{ color: '#4B9CD3' }}>A</span>
               </div>
-              <span className="text-2xl font-bold font-serif text-cream">AceStayz</span>
+              <span className="text-2xl font-bold font-serif text-white">AceStayz</span>
             </div>
-            <p className="text-cream/90 leading-relaxed mb-6 font-sans">
+            <p className="text-white/90 leading-relaxed mb-6 font-sans">
               We leverage technology to create and manage smart hotels for a new generation of young travellers.
             </p>
             <div className="flex space-x-4">
               <a 
                 href="#" 
-                className="text-cream/80 hover:text-gold-dust transition-colors duration-300"
+                className="text-white/80 hover:text-white transition-colors duration-300"
                 aria-label="Follow us on Instagram"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
               </a>
               <a 
                 href="#" 
-                className="text-cream/80 hover:text-gold-dust transition-colors duration-300"
+                className="text-white/80 hover:text-white transition-colors duration-300"
                 aria-label="Follow us on Twitter"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
               </a>
               <a 
                 href="#" 
-                className="text-cream/80 hover:text-gold-dust transition-colors duration-300"
+                className="text-white/80 hover:text-white transition-colors duration-300"
                 aria-label="Follow us on YouTube"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
               </a>
               <a 
                 href="#" 
-                className="text-cream/80 hover:text-gold-dust transition-colors duration-300"
+                className="text-white/80 hover:text-white transition-colors duration-300"
                 aria-label="Follow us on Facebook"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -96,12 +96,12 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 font-serif text-cream">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-6 font-serif text-white">Quick Links</h3>
             <ul className="space-y-3">
               <li>
                 <a 
                   href="#" 
-                  className="text-cream/90 hover:text-gold-dust transition-colors duration-300 underline decoration-cream/50 hover:decoration-gold-dust font-sans"
+                  className="text-white/90 hover:text-white transition-colors duration-300 underline decoration-white/50 hover:decoration-white font-sans"
                   aria-label="Why AceStayz?"
                   tabIndex={0}
                   onKeyDown={(e) => {
@@ -117,7 +117,7 @@ const Footer: React.FC = () => {
               <li>
                 <a 
                   href="#" 
-                  className="text-cream/90 hover:text-gold-dust transition-colors duration-300 underline decoration-cream/50 hover:decoration-gold-dust font-sans"
+                  className="text-white/90 hover:text-white transition-colors duration-300 underline decoration-white/50 hover:decoration-white font-sans"
                   aria-label="Developers and Owners"
                   tabIndex={0}
                   onKeyDown={(e) => {
@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
               <li>
                 <a 
                   href="#" 
-                  className="text-cream/90 hover:text-gold-dust transition-colors duration-300 underline decoration-cream/50 hover:decoration-gold-dust font-sans"
+                  className="text-white/90 hover:text-white transition-colors duration-300 underline decoration-white/50 hover:decoration-white font-sans"
                   aria-label="Careers"
                   tabIndex={0}
                   onKeyDown={(e) => {
@@ -149,7 +149,7 @@ const Footer: React.FC = () => {
               <li>
                 <a 
                   href="#" 
-                  className="text-cream/90 hover:text-gold-dust transition-colors duration-300 underline decoration-cream/50 hover:decoration-gold-dust font-sans"
+                  className="text-white/90 hover:text-white transition-colors duration-300 underline decoration-white/50 hover:decoration-white font-sans"
                   aria-label="Loyalty Program"
                   tabIndex={0}
                   onKeyDown={(e) => {
@@ -167,12 +167,12 @@ const Footer: React.FC = () => {
 
           {/* Support */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 font-serif text-cream">Support</h3>
+            <h3 className="text-lg font-semibold mb-6 font-serif text-white">Support</h3>
             <ul className="space-y-3">
               <li>
                 <a 
                   href="#" 
-                  className="text-cream/90 hover:text-gold-dust transition-colors duration-300 underline decoration-cream/50 hover:decoration-gold-dust font-sans"
+                  className="text-white/90 hover:text-white transition-colors duration-300 underline decoration-white/50 hover:decoration-white font-sans"
                   aria-label="Contact Us"
                   tabIndex={0}
                   onKeyDown={(e) => {
@@ -188,7 +188,7 @@ const Footer: React.FC = () => {
               <li>
                 <a 
                   href="#" 
-                  className="text-cream/90 hover:text-gold-dust transition-colors duration-300 underline decoration-cream/50 hover:decoration-gold-dust font-sans"
+                  className="text-white/90 hover:text-white transition-colors duration-300 underline decoration-white/50 hover:decoration-white font-sans"
                   aria-label="For the Press"
                   tabIndex={0}
                   onKeyDown={(e) => {
@@ -204,7 +204,7 @@ const Footer: React.FC = () => {
               <li>
                 <a 
                   href="#" 
-                  className="text-cream/90 hover:text-gold-dust transition-colors duration-300 underline decoration-cream/50 hover:decoration-gold-dust font-sans"
+                  className="text-white/90 hover:text-white transition-colors duration-300 underline decoration-white/50 hover:decoration-white font-sans"
                   aria-label="In the Media"
                   tabIndex={0}
                   onKeyDown={(e) => {
@@ -220,7 +220,7 @@ const Footer: React.FC = () => {
               <li>
                 <a 
                   href="#" 
-                  className="text-cream/90 hover:text-gold-dust transition-colors duration-300 underline decoration-cream/50 hover:decoration-gold-dust font-sans"
+                  className="text-white/90 hover:text-white transition-colors duration-300 underline decoration-white/50 hover:decoration-white font-sans"
                   aria-label="About Us"
                   tabIndex={0}
                   onKeyDown={(e) => {
@@ -238,19 +238,19 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 font-serif text-cream">Contact Info</h3>
+            <h3 className="text-lg font-semibold mb-6 font-serif text-white">Contact Info</h3>
             <div className="space-y-4">
               <div className="flex items-center">
-                <FiMapPin className="w-5 h-5 text-gold-dust mr-3 flex-shrink-0" />
-                <span className="text-cream/90 font-sans">123 Hotel Street, City, State 12345</span>
+                <FiMapPin className="w-5 h-5 text-white mr-3 flex-shrink-0" />
+                <span className="text-white/90 font-sans">123 Hotel Street, City, State 12345</span>
               </div>
               <div className="flex items-center">
-                <FiPhone className="w-5 h-5 text-gold-dust mr-3 flex-shrink-0" />
-                <span className="text-cream/90 font-sans">+1 (555) 123-4567</span>
+                <FiPhone className="w-5 h-5 text-white mr-3 flex-shrink-0" />
+                <span className="text-white/90 font-sans">+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center">
-                <FiMail className="w-5 h-5 text-gold-dust mr-3 flex-shrink-0" />
-                <span className="text-cream/90 font-sans">info@acestayz.com</span>
+                <FiMail className="w-5 h-5 text-white mr-3 flex-shrink-0" />
+                <span className="text-white/90 font-sans">info@acestayz.com</span>
               </div>
             </div>
           </div>
@@ -258,14 +258,14 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-cream/20 relative z-10">
+      <div className="border-t border-white/20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6 text-sm text-cream/80 mb-4 md:mb-0 font-sans">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6 text-sm text-white/80 mb-4 md:mb-0 font-sans">
               <span>©2025 AceStayz</span>
               <a 
                 href="#" 
-                className="hover:text-gold-dust transition-colors duration-300"
+                className="hover:text-white transition-colors duration-300"
                 aria-label="Terms and Conditions"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -279,7 +279,7 @@ const Footer: React.FC = () => {
               </a>
               <a 
                 href="#" 
-                className="hover:text-gold-dust transition-colors duration-300"
+                className="hover:text-white transition-colors duration-300"
                 aria-label="Cancellation Policy"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -293,7 +293,7 @@ const Footer: React.FC = () => {
               </a>
               <a 
                 href="#" 
-                className="hover:text-gold-dust transition-colors duration-300"
+                className="hover:text-white transition-colors duration-300"
                 aria-label="Privacy and Cookie Policy"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -307,7 +307,7 @@ const Footer: React.FC = () => {
               </a>
               <a 
                 href="#" 
-                className="hover:text-gold-dust transition-colors duration-300"
+                className="hover:text-white transition-colors duration-300"
                 aria-label="Blog and Buzz"
                 tabIndex={0}
                 onKeyDown={(e) => {
