@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 
 // ACE 55 Images
-import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606 2.JPG'
+import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606-2.JPG'
 import ace55_2 from '../assets/images/ACE 55/Copy of IMG_3570.jpg'
 
 // ACE 57 Images

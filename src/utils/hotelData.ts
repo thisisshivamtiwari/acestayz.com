@@ -1,7 +1,7 @@
 import { Hotel } from '../components/HotelCard'
 
 // ACE 55 Images
-import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606 2.JPG'
+import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606-2.JPG'
 import ace55_2 from '../assets/images/ACE 55/Copy of IMG_3570.jpg'
 import ace55_3 from '../assets/images/ACE 55/Copy of IMG_3539.jpg'
 import ace55_4 from '../assets/images/ACE 55/Copy of DSC_0254-2.jpg'

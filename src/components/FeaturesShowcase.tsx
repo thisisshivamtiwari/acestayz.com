@@ -1,7 +1,7 @@
 import React from 'react'
 
 // ACE 55 Images
-import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606 2.JPG'
+import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606-2.JPG'
 
 // ACE 57 Images
 import ace57_1 from '../assets/images/ACE 57/Copy of IMG_5838 2.jpg'
