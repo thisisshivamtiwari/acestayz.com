@@ -1,7 +1,115 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { allHotels, locationData } from '../utils/hotelData'
 
 const HeroSection: React.FC = () => {
+  const [featuredHotels, setFeaturedHotels] = useState<typeof allHotels>([])
   const [searchQuery, setSearchQuery] = useState('')
+  const [availableCities, setAvailableCities] = useState<string[]>([])
+
+  useEffect(() => {
+    const loadFeaturedHotels = () => {
+      // Get navigation items from localStorage
+      const navItems = localStorage.getItem('navigationItems')
+      
+      if (navItems) {
+        try {
+          const parsedItems = JSON.parse(navItems)
+          const cities = parsedItems
+            .filter((item: any) => item.type === 'city')
+            .map((item: any) => item.name)
+            .sort() // Sort alphabetically
+          
+          // Capitalize city names for display
+          const displayCities = cities.map((city: string) => 
+            city.charAt(0).toUpperCase() + city.slice(1)
+          )
+          setAvailableCities(displayCities)
+          
+          // Get hotels from available cities
+          const hotels: typeof allHotels = []
+          let totalCount = 0
+          cities.forEach((city: string) => {
+            const cityHotels = allHotels.filter(hotel => 
+              hotel.location.toLowerCase().includes(city.toLowerCase())
+            )
+            totalCount += cityHotels.length
+            if (cityHotels.length > 0) {
+              hotels.push(cityHotels[0]) // Take first hotel from each city
+            }
+          })
+          
+          // Take up to 2 hotels
+          setFeaturedHotels(hotels.slice(0, 2))
+        } catch (error) {
+          console.error('Error parsing navigation items:', error)
+          // Fallback to showing hotels from locationData
+          const availableLocations = Object.keys(locationData).sort()
+          const displayCities = availableLocations.map(loc => 
+            locationData[loc].name
+          )
+          setAvailableCities(displayCities)
+          
+          const hotels: typeof allHotels = []
+          
+          let totalCount = 0
+          availableLocations.forEach(location => {
+            const locationHotels = locationData[location].hotels
+            totalCount += locationHotels.length
+            if (locationHotels.length > 0) {
+              hotels.push(locationHotels[0])
+            }
+          })
+          
+          setFeaturedHotels(hotels.slice(0, 2))
+        }
+      } else {
+        // Fallback to showing hotels from locationData
+        const availableLocations = Object.keys(locationData).sort()
+        const displayCities = availableLocations.map(loc => 
+          locationData[loc].name
+        )
+        setAvailableCities(displayCities)
+        
+        const hotels: typeof allHotels = []
+        let totalCount = 0
+        
+        availableLocations.forEach(location => {
+          const locationHotels = locationData[location].hotels
+          totalCount += locationHotels.length
+          if (locationHotels.length > 0) {
+            hotels.push(locationHotels[0])
+          }
+        })
+        
+        setFeaturedHotels(hotels.slice(0, 2))
+      }
+    }
+
+    // Load initially
+    loadFeaturedHotels()
+
+    // Listen for storage changes (when admin updates navigation)
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'navigationItems') {
+        loadFeaturedHotels()
+      }
+    }
+
+    window.addEventListener('storage', handleStorageChange)
+    
+    // Also listen for custom event from same window
+    const handleNavigationUpdate = () => {
+      loadFeaturedHotels()
+    }
+    
+    window.addEventListener('navigationUpdated', handleNavigationUpdate)
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+      window.removeEventListener('navigationUpdated', handleNavigationUpdate)
+    }
+  }, [])
 
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -69,7 +177,7 @@ const HeroSection: React.FC = () => {
                     type="text"
                     value={searchQuery}
                     onChange={handleSearchChange}
-                    placeholder="Book a Stay in Delhi, Noida, Gurugram..."
+                    placeholder={`Book a Stay in ${availableCities.length > 0 ? availableCities.join(', ') : 'Delhi, Gurugram'}...`}
                     className="w-full pl-12 pr-4 py-4 text-lg bg-white/95 backdrop-blur-sm border-0 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:bg-white transition-all duration-300 shadow-2xl" style={{'--tw-ring-color': '#4B9CD3'} as React.CSSProperties}
                   />
                   <button
@@ -101,7 +209,9 @@ const HeroSection: React.FC = () => {
                 <div className="text-sm text-gray-300">Happy Guests</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold" style={{color: '#4B9CD3'}}>15+</div>
+                <div className="text-3xl font-bold" style={{color: '#4B9CD3'}}>
+                  {availableCities.length > 0 ? `${availableCities.length}+` : '2+'}
+                </div>
                 <div className="text-sm text-gray-300">Prime Locations</div>
               </div>
             </div>
@@ -110,42 +220,65 @@ const HeroSection: React.FC = () => {
           {/* Right Content - Property Showcase */}
           <div className="hidden lg:block">
             <div className="relative">
-              {/* Floating Property Cards */}
-              <div className="absolute top-0 right-0 w-80 h-96 bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 p-6 transform rotate-3 hover:rotate-0 transition-transform duration-300">
-                <div className="h-48 rounded-2xl mb-4 overflow-hidden">
-                  <img 
-                    src="https://acestayz.com/new-img/f1.jpeg" 
-                    alt="Luxury Suite Noida" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-white font-semibold text-lg mb-2">Luxury Suite - Noida</h3>
-                <p className="text-gray-300 text-sm mb-4">Premium 3BHK with modern amenities</p>
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-xl" style={{color: '#4B9CD3'}}>₹4,999/night</span>
-                  <button className="text-white px-4 py-2 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#4B9CD3'}} onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#001a4d'} onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#4B9CD3'}>
-                    Book Now
-                  </button>
-                </div>
-              </div>
+              {/* Floating Property Card 1 - First Hotel */}
+              {featuredHotels[0] && (
+                <Link 
+                  to={`/hotel/${featuredHotels[0].slug}`}
+                  className="absolute top-0 right-0 w-80 bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 p-4 pb-3 transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 block overflow-hidden"
+                >
+                  <div className="h-40 rounded-2xl mb-2 overflow-hidden">
+                    <img 
+                      src={featuredHotels[0].image} 
+                      alt={featuredHotels[0].title} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-white font-semibold text-sm mb-1.5 truncate">{featuredHotels[0].title}</h3>
+                  <p className="text-gray-300 text-xs mb-2 line-clamp-1 overflow-hidden">{featuredHotels[0].description}</p>
+                  <div className="flex items-center justify-end mb-1">
+                    {/* <div className="font-bold text-base" style={{color: '#4B9CD3'}}>₹{featuredHotels[0].price?.toLocaleString()}/night</div> */}
+                    <span className="inline-block text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap" style={{backgroundColor: '#4B9CD3'}}>
+                      Book Stay
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-gray-300 overflow-hidden">
+                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="truncate">{featuredHotels[0].location}</span>
+                  </div>
+                </Link>
+              )}
 
-              <div className="absolute top-20 left-0 w-72 h-80 bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 p-6 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
-                <div className="h-40 rounded-2xl mb-4 overflow-hidden">
-                  <img 
-                    src="https://acestayz.com/new-img/f1.jpeg" 
-                    alt="Studio Apartment Delhi" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-white font-semibold text-lg mb-2">Studio Apartment - Delhi</h3>
-                <p className="text-gray-300 text-sm mb-4">Cozy studio with city view</p>
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-xl" style={{color: '#4B9CD3'}}>₹2,999/night</span>
-                  <button className="text-white px-4 py-2 rounded-lg font-semibold transition-colors" style={{backgroundColor: '#4B9CD3'}} onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#001a4d'} onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#4B9CD3'}>
-                    Book Now
-                  </button>
-                </div>
-              </div>
+              {/* Floating Property Card 2 - Second Hotel */}
+              {featuredHotels[1] && (
+                <Link 
+                  to={`/hotel/${featuredHotels[1].slug}`}
+                  className="absolute top-20 left-0 w-72 bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 p-4 pb-3 transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 block overflow-hidden"
+                >
+                  <div className="h-32 rounded-2xl mb-2 overflow-hidden">
+                    <img 
+                      src={featuredHotels[1].image} 
+                      alt={featuredHotels[1].title} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-white font-semibold text-sm mb-1.5 truncate">{featuredHotels[1].title}</h3>
+                  <p className="text-gray-300 text-xs mb-2 line-clamp-1 overflow-hidden">{featuredHotels[1].description}</p>
+                  <div className="flex items-center justify-end mb-1">
+                    {/* <div className="font-bold text-base" style={{color: '#4B9CD3'}}>₹{featuredHotels[1].price?.toLocaleString()}/night</div> */}
+                    <span className="inline-block text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap" style={{backgroundColor: '#4B9CD3'}}>
+                      Book Stay
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-gray-300 overflow-hidden">
+                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="truncate">{featuredHotels[1].location}</span>
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
         </div>

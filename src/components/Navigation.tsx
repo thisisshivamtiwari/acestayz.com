@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import delhiImage from '../assets/images/navbarImages/delhi_navbar.png'
+import gurguggramImage from '../assets/images/navbarImages/gurgugram_navbar.png'
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -9,66 +11,30 @@ const Navigation: React.FC = () => {
     setIsMenuOpen(!isMenuOpen)
   }
 
-  const handleHotelsDropdown = () => {
-    setIsHotelsDropdownOpen(!isHotelsDropdownOpen)
+  const handleHotelsMouseEnter = () => {
+    setIsHotelsDropdownOpen(true)
   }
 
-  // City data with beautiful, high-quality images
+  const handleHotelsMouseLeave = () => {
+    setIsHotelsDropdownOpen(false)
+  }
+
+  // City data with beautiful, high-quality images - sorted alphabetically
   const cities = [
     {
-      name: 'Noida',
-      image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=120&q=90',
-      alt: 'Noida cityscape with modern buildings'
-    },
-    {
       name: 'Delhi',
-      image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=120&q=90',
+      image: delhiImage,
       alt: 'Delhi landmarks and monuments'
     },
     {
       name: 'Gurugram',
-      image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=120&q=90',
+      image: gurguggramImage,
       alt: 'Gurugram modern skyline'
-    },
-    {
-      name: 'Jaipur',
-      image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=120&q=90',
-      alt: 'Jaipur pink city palace'
-    },
-    {
-      name: 'Goa',
-      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=120&q=90',
-      alt: 'Goa beautiful beaches'
-    },
-    {
-      name: 'Bangalore',
-      image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=120&q=90',
-      alt: 'Bangalore tech city'
-    },
-    {
-      name: 'Chennai',
-      image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=120&q=90',
-      alt: 'Chennai cultural landmarks'
-    },
-    {
-      name: 'Hyderabad',
-      image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=120&q=90',
-      alt: 'Hyderabad historic city'
-    },
-    {
-      name: 'Mumbai',
-      image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=120&q=90',
-      alt: 'Mumbai financial capital'
-    },
-    {
-      name: 'Pune',
-      image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=120&q=90',
-      alt: 'Pune educational hub'
     }
   ]
 
-  const leftColumnCities = cities.slice(0, 5)
-  const rightColumnCities = cities.slice(5, 10)
+  const leftColumnCities = cities.slice(0, 1)
+  const rightColumnCities = cities.slice(1, 2)
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-sm">
@@ -82,12 +48,15 @@ const Navigation: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          <div className="hidden md:flex flex-1 justify-center">
+            <div className="flex items-baseline space-x-8">
               {/* Hotels Dropdown */}
-              <div className="relative">
+              <div 
+                className="relative"
+                onMouseEnter={handleHotelsMouseEnter}
+                onMouseLeave={handleHotelsMouseLeave}
+              >
                 <button
-                  onClick={handleHotelsDropdown}
                   className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium flex items-center space-x-1 transition-colors duration-200"
                 >
                   <span>Hotels</span>
@@ -110,12 +79,17 @@ const Navigation: React.FC = () => {
 
                 {/* Dropdown Menu */}
                 {isHotelsDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-3 w-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 py-8 overflow-hidden">
+                  <div className="absolute top-full left-0 pt-2 w-[500px]">
+                    <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 py-8 overflow-hidden">
                     <div className="grid grid-cols-2 gap-4 px-8">
                       {/* Left Column */}
                       <div className="space-y-3">
                         {leftColumnCities.map((city, index) => (
-                          <div key={index} className="group flex items-center space-x-4 p-4 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+                          <Link 
+                            key={index}
+                            to={`/location/${city.name.toLowerCase()}`}
+                            className="group flex items-center space-x-4 p-4 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.02]"
+                          >
                             <div className="w-16 h-12 rounded-xl overflow-hidden flex-shrink-0 shadow-md group-hover:shadow-lg transition-shadow duration-300">
                               <img 
                                 src={city.image}
@@ -130,14 +104,18 @@ const Navigation: React.FC = () => {
                             <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
-                          </div>
+                          </Link>
                         ))}
                       </div>
 
                       {/* Right Column */}
                       <div className="space-y-3">
                         {rightColumnCities.map((city, index) => (
-                          <div key={index} className="group flex items-center space-x-4 p-4 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+                          <Link 
+                            key={index}
+                            to={`/location/${city.name.toLowerCase()}`}
+                            className="group flex items-center space-x-4 p-4 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.02]"
+                          >
                             <div className="w-16 h-12 rounded-xl overflow-hidden flex-shrink-0 shadow-md group-hover:shadow-lg transition-shadow duration-300">
                               <img 
                                 src={city.image}
@@ -152,22 +130,10 @@ const Navigation: React.FC = () => {
                             <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
-                          </div>
+                          </Link>
                         ))}
                       </div>
                     </div>
-                    
-                    {/* Footer */}
-                    <div className="mt-6 pt-4 border-t border-gray-100 px-8">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-600">Explore all destinations</span>
-                        <button className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center space-x-1 transition-colors duration-200">
-                          <span>View All</span>
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </button>
-                      </div>
                     </div>
                   </div>
                 )}
@@ -187,13 +153,6 @@ const Navigation: React.FC = () => {
                 Franchise Partner
               </Link>
             </div>
-          </div>
-
-          {/* Desktop CTA Button */}
-          <div className="hidden md:block">
-            <button className="bg-transparent border border-white text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all duration-200">
-              Login / Join
-            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -236,9 +195,6 @@ const Navigation: React.FC = () => {
               >
                 Franchise Partner
               </Link>
-              <button className="w-full text-left text-white hover:text-gray-300 block px-3 py-2 text-base font-medium">
-                Login / Join
-              </button>
             </div>
           </div>
         )}

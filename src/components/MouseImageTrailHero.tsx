@@ -2,6 +2,21 @@ import React, { useRef } from 'react'
 import { useAnimate } from 'framer-motion'
 import { FiMousePointer } from 'react-icons/fi'
 
+// ACE 55 Images
+import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606 2.JPG'
+import ace55_2 from '../assets/images/ACE 55/Copy of IMG_3570.jpg'
+import ace55_3 from '../assets/images/ACE 55/Copy of DSC_0254-2.jpg'
+
+// ACE 57 Images
+import ace57_1 from '../assets/images/ACE 57/Copy of IMG_5838 2.jpg'
+import ace57_2 from '../assets/images/ACE 57/Copy of IMG_5779.jpg'
+import ace57_3 from '../assets/images/ACE 57/Copy of DSC_0384.jpg'
+
+// Ace Vasant Kunj Images
+import aceVK_1 from '../assets/images/Ace Vasant Kunj/Copy of IMG_8772.jpg'
+import aceVK_2 from '../assets/images/Ace Vasant Kunj/Copy of IMG_7451.jpg'
+import aceVK_3 from '../assets/images/Ace Vasant Kunj/Copy of IMG_7435.jpg'
+
 type MouseImageTrailProps = {
   children: React.ReactNode
   images: string[]
@@ -89,12 +104,15 @@ const MouseImageTrailHero: React.FC = () => {
       renderImageBuffer={20}
       rotationRange={25}
       images={[
-        'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1501117716987-c8e1ecb2101f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-        'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+        ace55_1,
+        ace55_2,
+        ace55_3,
+        ace57_1,
+        ace57_2,
+        ace57_3,
+        aceVK_1,
+        aceVK_2,
+        aceVK_3
       ]}
     >
       <section className="w-full px-4 sm:px-6 lg:px-8 py-20 bg-gray-100">

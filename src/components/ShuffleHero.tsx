@@ -1,28 +1,50 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
+// ACE 55 Images
+import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606 2.JPG'
+import ace55_2 from '../assets/images/ACE 55/Copy of IMG_3570.jpg'
+import ace55_3 from '../assets/images/ACE 55/Copy of IMG_3539.jpg'
+import ace55_4 from '../assets/images/ACE 55/Copy of DSC_0254-2.jpg'
+import ace55_5 from '../assets/images/ACE 55/Copy of DSC_0236.jpg'
+import ace55_6 from '../assets/images/ACE 55/Copy of ChatGPT Image Sep 30, 2025, 04_27_28 PM.jpg'
+
+// ACE 57 Images
+import ace57_1 from '../assets/images/ACE 57/Copy of IMG_5838 2.jpg'
+import ace57_2 from '../assets/images/ACE 57/Copy of IMG_5828 2.jpg'
+import ace57_3 from '../assets/images/ACE 57/Copy of IMG_5779.jpg'
+import ace57_4 from '../assets/images/ACE 57/Copy of IMG_3570.jpg'
+import ace57_5 from '../assets/images/ACE 57/Copy of DSC_0454.jpg'
+import ace57_6 from '../assets/images/ACE 57/Copy of DSC_0384.jpg'
+
+// Ace Vasant Kunj Images
+import aceVK_1 from '../assets/images/Ace Vasant Kunj/Copy of IMG_8772.jpg'
+import aceVK_2 from '../assets/images/Ace Vasant Kunj/Copy of IMG_8765.jpg'
+import aceVK_3 from '../assets/images/Ace Vasant Kunj/Copy of IMG_7451.jpg'
+import aceVK_4 from '../assets/images/Ace Vasant Kunj/Copy of IMG_7435.jpg'
+
 type Square = {
   id: number
   src: string
 }
 
 const squareData: Square[] = [
-  { id: 1, src: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80' }, // modern hotel lobby
-  { id: 2, src: 'https://images.unsplash.com/photo-1501117716987-c8e1ecb2101f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }, // luxury hotel exterior
-  { id: 3, src: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }, // hotel room bed
-  { id: 4, src: 'https://images.unsplash.com/photo-1560066985-5e0e5d1bd7b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }, // suite interior
-  { id: 5, src: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1325&q=80' }, // poolside
-  { id: 6, src: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80' }, // cozy bedroom
-  { id: 7, src: 'https://images.unsplash.com/photo-1551776235-dde6d4829808?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80' }, // rooftop view
-  { id: 8, src: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80' }, // hotel lobby seating
-  { id: 9, src: 'https://images.unsplash.com/photo-1546948630-14fc8a1682b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80' }, // modern bathroom
-  { id: 10, src: 'https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }, // boutique hotel
-  { id: 11, src: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }, // hotel lounge
-  { id: 12, src: 'https://images.unsplash.com/photo-1560066986-85e9a4f4d3a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }, // double bed room
-  { id: 13, src: 'https://images.unsplash.com/photo-1542314831-067c41b2b46f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }, // pool at night
-  { id: 14, src: 'https://images.unsplash.com/photo-1521783593447-5702fcdacb52?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }, // hotel breakfast area
-  { id: 15, src: 'https://images.unsplash.com/photo-1550565091-3135a7a7c9a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' }, // beach resort
-  { id: 16, src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1820&q=80' } // mountain hotel
+  { id: 1, src: ace55_1 },
+  { id: 2, src: ace55_2 },
+  { id: 3, src: ace55_3 },
+  { id: 4, src: ace55_4 },
+  { id: 5, src: ace55_5 },
+  { id: 6, src: ace55_6 },
+  { id: 7, src: ace57_1 },
+  { id: 8, src: ace57_2 },
+  { id: 9, src: ace57_3 },
+  { id: 10, src: ace57_4 },
+  { id: 11, src: ace57_5 },
+  { id: 12, src: ace57_6 },
+  { id: 13, src: aceVK_1 },
+  { id: 14, src: aceVK_2 },
+  { id: 15, src: aceVK_3 },
+  { id: 16, src: aceVK_4 }
 ]
 
 const shuffle = (array: Square[]): Square[] => {
@@ -46,7 +68,7 @@ const generateSquares = () => {
       key={sq.id}
       layout
       transition={{ duration: 1.2, type: 'spring' }}
-      className="w-full aspect-square rounded-lg bg-gray-200"
+      className="w-full bg-gray-200 rounded-lg aspect-square"
       style={{
         backgroundImage: `url(${sq.src})`,
         backgroundSize: 'cover',
@@ -75,16 +97,16 @@ const ShuffleGrid: React.FC = () => {
     }
   }, [])
 
-  return <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">{squares.map((sq) => sq)}</div>
+  return <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">{squares.map((sq) => sq)}</div>
 }
 
 const ShuffleHero: React.FC = () => {
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
+    <section className="grid grid-cols-1 gap-8 items-center px-4 py-12 mx-auto w-full max-w-6xl sm:px-6 lg:px-8 md:grid-cols-2">
       <div>
-        <span className="block mb-4 text-xs md:text-sm font-medium" style={{ color: '#4B9CD3' }}>Discover more</span>
-        <h3 className="text-4xl md:text-6xl font-semibold text-gray-900">Stays that inspire</h3>
-        <p className="text-base md:text-lg text-gray-700 my-4 md:my-6">
+        <span className="block mb-4 text-xs font-medium md:text-sm" style={{ color: '#4B9CD3' }}>Discover more</span>
+        <h3 className="text-4xl font-semibold text-gray-900 md:text-6xl">Stays that inspire</h3>
+        <p className="my-4 text-base text-gray-700 md:text-lg md:my-6">
           From boutique homestays to premium suites, explore curated places crafted for comfort and style.
         </p>
         <button

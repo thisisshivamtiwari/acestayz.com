@@ -1,180 +1,66 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-
-type Hotel = {
-  id: number
-  name: string
-  city: string
-  price: number
-  image: string
-}
-
-const hotels: Hotel[] = [
-  { id: 1, name: 'AceStayz - Karol Bagh', city: 'Delhi', price: 4725, image: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 2, name: 'AceStayz - Calangute', city: 'Goa', price: 7560, image: 'https://images.unsplash.com/photo-1501117716987-c8e1ecb2101f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 3, name: 'AceStayz - Whitefield', city: 'Bangalore', price: 6230, image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 4, name: 'AceStayz - Gurgaon', city: 'Gurugram', price: 5890, image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 5, name: 'AceStayz - Koregaon Park', city: 'Pune', price: 4450, image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 6, name: 'AceStayz - Baga', city: 'Goa', price: 8120, image: 'https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 7, name: 'AceStayz - Udaipur', city: 'Udaipur', price: 6780, image: 'https://images.unsplash.com/photo-1599586120429-48281b6f0ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 8, name: 'AceStayz - Srinagar', city: 'Srinagar', price: 5340, image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 9, name: 'AceStayz - Rishikesh', city: 'Rishikesh', price: 3890, image: 'https://images.unsplash.com/photo-1610768764270-790fbec18178?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 10, name: 'AceStayz - Mumbai', city: 'Mumbai', price: 8920, image: 'https://images.unsplash.com/photo-1507034589631-9433cc6bc453?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 11, name: 'AceStayz - Chennai', city: 'Chennai', price: 4560, image: 'https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-  { id: 12, name: 'AceStayz - Hyderabad', city: 'Hyderabad', price: 5120, image: 'https://images.unsplash.com/photo-1560089000-7433a4ebbd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' }
-]
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { allHotels } from '../utils/hotelData'
 
 const HotelShowcase: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const intervalRef = useRef<number | null>(null)
+  // Get unique locations
+  const uniqueLocations = [...new Set(allHotels.map(hotel => hotel.location.split(',')[0].trim()))]
+  const locationsList = uniqueLocations.sort().join(', ')
 
-  const totalSlides = Math.ceil(hotels.length / 8)
-
-  const handlePrevious = () => {
-    setCurrentIndex(prev => Math.max(0, prev - 1))
-  }
-
-  const handleNext = () => {
-    setCurrentIndex(prev => (prev + 1) % totalSlides)
-  }
-
-  const canGoPrevious = currentIndex > 0
-  const canGoNext = currentIndex < totalSlides - 1
-
-  // Auto-scroll functionality
-  useEffect(() => {
-    if (!isPaused) {
-      intervalRef.current = setInterval(() => {
-        setCurrentIndex(prev => (prev + 1) % totalSlides)
-      }, 4000) // Auto-advance every 4 seconds
-    }
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
-    }
-  }, [isPaused, totalSlides])
-
-  const handleMouseEnter = () => {
-    setIsPaused(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsPaused(false)
-  }
-
-  const navigate = useNavigate()
-  const goDetail = () => navigate('/hotel/karol-bagh')
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 py-16 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="px-4 py-16 w-full bg-white sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6" style={{ color: '#4B9CD3' }}>
-            AceStayz across India
+        <div className="mb-16 text-center">
+          <h2 className="mb-6 text-3xl font-semibold md:text-4xl" style={{ color: '#4B9CD3' }}>
+            Our Premium Properties
           </h2>
-          <p className="text-base text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            Discover premium accommodations in top locations including Mumbai, Bengaluru, Delhi, Gurugram, Pune, Goa, Udaipur, Srinagar & Rishikesh
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-gray-500">
+            Discover our premium studio apartments in {locationsList}
           </p>
         </div>
 
-        {/* Slider Container */}
-        <div 
-          className="relative"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {/* Navigation Arrows */}
-          <button
-            onClick={handlePrevious}
-            disabled={!canGoPrevious}
-            className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm ${
-              canGoPrevious 
-                ? 'text-white shadow-lg hover:shadow-xl hover:scale-110' 
-                : 'text-gray-300 cursor-not-allowed'
-            }`}
-            style={{ backgroundColor: canGoPrevious ? 'rgba(75, 156, 211, 0.9)' : 'rgba(229, 231, 235, 0.8)' }}
-            aria-label="Previous hotels"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            onClick={handleNext}
-            disabled={!canGoNext}
-            className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm ${
-              canGoNext 
-                ? 'text-white shadow-lg hover:shadow-xl hover:scale-110' 
-                : 'text-gray-300 cursor-not-allowed'
-            }`}
-            style={{ backgroundColor: canGoNext ? 'rgba(75, 156, 211, 0.9)' : 'rgba(229, 231, 235, 0.8)' }}
-            aria-label="Next hotels"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* Hotel Cards Grid */}
-          <div ref={containerRef} className="overflow-hidden">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        {/* Hotel Cards Grid */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {allHotels.map((hotel) => (
+            <Link 
+              to={`/hotel/${hotel.slug}`}
+              key={hotel.id} 
+              className="overflow-hidden bg-white rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-lg group focus:outline-none focus:ring-2 focus:ring-blue-300"
             >
-              {Array.from({ length: Math.ceil(hotels.length / 8) }, (_, slideIndex) => (
-                <div key={slideIndex} className="min-w-full">
-                  {/* Top Row */}
-                  <div className="grid grid-cols-4 gap-8 mb-8">
-                    {hotels.slice(slideIndex * 8, slideIndex * 8 + 4).map((hotel) => (
-                      <div onClick={goDetail} role="link" tabIndex={0} key={hotel.id} className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group border border-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300">
-                        <div className="h-52 overflow-hidden">
-                          <img 
-                            src={hotel.image} 
-                            alt={hotel.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                        <div className="p-5">
-                          <h3 className="font-medium text-base text-gray-800 mb-2 leading-tight">{hotel.name}</h3>
-                          <div className="flex items-center justify-between">
-                            <p className="text-sm text-gray-500">{hotel.city}</p>
-                            <p className="font-semibold text-green-600 text-sm">From ₹{hotel.price.toLocaleString()}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Bottom Row */}
-                  <div className="grid grid-cols-4 gap-8">
-                    {hotels.slice(slideIndex * 8 + 4, slideIndex * 8 + 8).map((hotel) => (
-                      <div onClick={goDetail} role="link" tabIndex={0} key={hotel.id} className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group border border-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300">
-                        <div className="h-52 overflow-hidden">
-                          <img 
-                            src={hotel.image} 
-                            alt={hotel.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                        <div className="p-5">
-                          <h3 className="font-medium text-base text-gray-800 mb-2 leading-tight">{hotel.name}</h3>
-                          <div className="flex items-center justify-between">
-                            <p className="text-sm text-gray-500">{hotel.city}</p>
-                            <p className="font-semibold text-green-600 text-sm">From ₹{hotel.price.toLocaleString()}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+              <div className="overflow-hidden h-64">
+                <img 
+                  src={hotel.image} 
+                  alt={hotel.title}
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="mb-2 text-lg font-medium leading-tight text-gray-800">{hotel.title}</h3>
+                <div className="flex justify-between items-center mb-3">
+                  <p className="flex gap-1 items-center text-sm text-gray-500">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                    {hotel.location}
+                  </p>
+                  <div className="flex gap-1 items-center">
+                    <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-700">{hotel.rating}</span>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+                <p className="mb-3 text-sm text-gray-600 line-clamp-2">{hotel.description}</p>
+                <div className="flex justify-end items-center pt-3 border-t border-gray-100">
+                  {/* <p className="text-lg font-semibold" style={{ color: '#4B9CD3' }}>₹{hotel.price?.toLocaleString()}/night</p> */}
+                  <span className="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors" style={{ backgroundColor: '#4B9CD3' }}>
+                    View Details
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

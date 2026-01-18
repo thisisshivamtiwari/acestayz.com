@@ -1,5 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react'
 
+// ACE 55 Images
+import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606 2.JPG'
+import ace55_2 from '../assets/images/ACE 55/Copy of IMG_3570.jpg'
+
+// ACE 57 Images
+import ace57_1 from '../assets/images/ACE 57/Copy of IMG_5838 2.jpg'
+import ace57_2 from '../assets/images/ACE 57/Copy of IMG_5779.jpg'
+
+// Ace Vasant Kunj Images
+import aceVK_1 from '../assets/images/Ace Vasant Kunj/Copy of IMG_8772.jpg'
+import aceVK_2 from '../assets/images/Ace Vasant Kunj/Copy of IMG_7451.jpg'
+
 type GridItem = {
   id: number
   type: 'image' | 'text' | 'logo' | 'testimonial' | 'award'
@@ -21,7 +33,7 @@ const gridItems: GridItem[] = [
   {
     id: 1,
     type: 'image',
-    imageSrc: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=600&h=400&fit=crop&crop=center',
+    imageSrc: ace55_1,
     spanClasses: 'col-span-2 row-span-2'
   },
   {
@@ -34,9 +46,10 @@ const gridItems: GridItem[] = [
   },
   {
     id: 3,
-    type: 'logo',
-    logoSrc: 'https://via.placeholder.com/150x60/4285F4/FFFFFF?text=Google',
+    type: 'text',
+    content: '4.9 ⭐ Rating',
     bgColor: 'bg-white',
+    textColor: 'text-gray-800',
     spanClasses: 'col-span-1 row-span-1'
   },
   {
@@ -52,7 +65,7 @@ const gridItems: GridItem[] = [
   {
     id: 5,
     type: 'image',
-    imageSrc: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=300&h=200&fit=crop&crop=center',
+    imageSrc: ace57_1,
     spanClasses: 'col-span-1 row-span-1'
   },
   {
@@ -68,7 +81,7 @@ const gridItems: GridItem[] = [
   {
     id: 7,
     type: 'image',
-    imageSrc: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=200&fit=crop&crop=center',
+    imageSrc: aceVK_1,
     spanClasses: 'col-span-2 row-span-1'
   },
   {
@@ -82,20 +95,21 @@ const gridItems: GridItem[] = [
   {
     id: 9,
     type: 'image',
-    imageSrc: 'https://images.unsplash.com/photo-1501117716987-c8e1ecb2101f?w=300&h=400&fit=crop&crop=center',
+    imageSrc: ace55_2,
     spanClasses: 'col-span-1 row-span-2'
   },
   {
     id: 10,
-    type: 'logo',
-    logoSrc: 'https://via.placeholder.com/150x60/00AF87/FFFFFF?text=TripAdvisor',
+    type: 'text',
+    content: '500+ Happy Guests',
     bgColor: 'bg-white',
+    textColor: 'text-gray-800',
     spanClasses: 'col-span-1 row-span-1'
   },
   {
     id: 11,
     type: 'image',
-    imageSrc: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=200&fit=crop&crop=center',
+    imageSrc: ace57_2,
     spanClasses: 'col-span-2 row-span-1'
   },
   {
@@ -118,14 +132,15 @@ const gridItems: GridItem[] = [
   {
     id: 14,
     type: 'image',
-    imageSrc: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=300&h=200&fit=crop&crop=center',
+    imageSrc: aceVK_2,
     spanClasses: 'col-span-1 row-span-1'
   },
   {
     id: 15,
-    type: 'logo',
-    logoSrc: 'https://via.placeholder.com/150x60/CC0000/FFFFFF?text=CNN',
+    type: 'text',
+    content: '6+ Years Experience',
     bgColor: 'bg-white',
+    textColor: 'text-gray-800',
     spanClasses: 'col-span-1 row-span-1'
   }
 ]
@@ -187,12 +202,8 @@ const BentoGridShowcase: React.FC = () => {
           <div className={`relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-2xl transition-all duration-500 ${item.spanClasses}`}>
             <img 
               src={item.imageSrc} 
-              alt={`Grid item ${item.id}`} 
+              alt={`ACE STAYZ property image ${item.id}`} 
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = 'https://via.placeholder.com/400x300/4B9CD3/FFFFFF?text=Hotel+Image';
-              }}
             />
             <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>

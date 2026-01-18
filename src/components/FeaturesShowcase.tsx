@@ -1,5 +1,14 @@
 import React from 'react'
 
+// ACE 55 Images
+import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606 2.JPG'
+
+// ACE 57 Images
+import ace57_1 from '../assets/images/ACE 57/Copy of IMG_5838 2.jpg'
+
+// Ace Vasant Kunj Images
+import aceVK_1 from '../assets/images/Ace Vasant Kunj/Copy of IMG_8772.jpg'
+
 type Feature = {
   id: number
   title: string
@@ -13,22 +22,22 @@ const features: Feature[] = [
     id: 1,
     title: 'Tech with heart',
     description: 'Like a best friend you can always trust & rely on, we\'re there for you every step of your stay helping you bloom to your best.',
-    image: 'https://st4.depositphotos.com/4678277/40445/i/1600/depositphotos_404453754-stock-photo-full-size-photo-of-positive.jpg',
-    alt: 'Friendly hotel staff member at reception desk'
+    image: ace55_1,
+    alt: 'Premium hotel room at ACE Stayz Sector 55 Gurugram'
   },
   {
     id: 2,
     title: 'Automated Cleanliness',
     description: 'We actually design our hotels to be easier to clean which is probably why people keep saying we\'re the cleanest hotel chain in India.',
-    image: 'https://cdn.decorpad.com/photos/2018/01/01/m_pink-and-blue-girl-bedroom-colors.jpg',
-    alt: 'Modern clean hotel room with desk and lighting'
+    image: ace57_1,
+    alt: 'Clean and modern hotel room at ACE Stayz Sector 57 Gurugram'
   },
   {
     id: 3,
     title: 'Sleep Tech',
     description: 'Our custom built CloudBeds™ are so comfortable you may just find yourself hitting the alarm snooze a few too many times.',
-    image: 'https://cdn.homedit.com/wp-content/uploads/2020/10/turquoise-and-pink-girls-bed-room-girl-room-colors.jpg',
-    alt: 'Comfortable hotel bed with modern amenities'
+    image: aceVK_1,
+    alt: 'Comfortable hotel room at ACE Stayz Vasant Kunj Delhi'
   }
 ]
 

@@ -1,11 +1,11 @@
 import { AnimatedInView, GlassCard, Section } from './Base'
 import { FiShield } from 'react-icons/fi'
 
-export default function AmenitiesGrid() {
-  const amenities = [
-    'Cloud Beds', 'Rain Showers', 'Air Conditioner', 'Digital Safe', 'Cloth Hanging Unit',
-    'Tea / Coffee Kettle', 'Free Wi‑Fi', 'Mini Fridge', '32” TV', 'Desk & Chair',
-  ]
+interface AmenitiesGridProps {
+  amenities?: string[]
+}
+
+export default function AmenitiesGrid({ amenities = [] }: AmenitiesGridProps) {
   return (
     <Section title="Amenities" id="amenities">
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
@@ -25,5 +25,4 @@ export default function AmenitiesGrid() {
     </Section>
   )
 }
-
 
