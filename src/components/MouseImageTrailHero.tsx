@@ -3,19 +3,19 @@ import { useAnimate } from 'framer-motion'
 import { FiMousePointer } from 'react-icons/fi'
 
 // ACE 55 Images
-import ace55_1 from '../assets/images/ACE 55/Copy of IMG_3606-2.JPG'
-import ace55_2 from '../assets/images/ACE 55/Copy of IMG_3570.jpg'
-import ace55_3 from '../assets/images/ACE 55/Copy of DSC_0254-2.jpg'
+import ace55_1 from '../assets/images/ACE_55/IMG_3606-2.jpg'
+import ace55_2 from '../assets/images/ACE_55/IMG_3570.jpg'
+import ace55_3 from '../assets/images/ACE_55/DSC_0254-2.jpg'
 
 // ACE 57 Images
-import ace57_1 from '../assets/images/ACE 57/Copy of IMG_5838 2.jpg'
-import ace57_2 from '../assets/images/ACE 57/Copy of IMG_5779.jpg'
-import ace57_3 from '../assets/images/ACE 57/Copy of DSC_0384.jpg'
+import ace57_1 from '../assets/images/ACE_57/IMG_5838-2.jpg'
+import ace57_2 from '../assets/images/ACE_57/IMG_5779.jpg'
+import ace57_3 from '../assets/images/ACE_57/DSC_0384.jpg'
 
 // Ace Vasant Kunj Images
-import aceVK_1 from '../assets/images/Ace Vasant Kunj/Copy of IMG_8772.jpg'
-import aceVK_2 from '../assets/images/Ace Vasant Kunj/Copy of IMG_7451.jpg'
-import aceVK_3 from '../assets/images/Ace Vasant Kunj/Copy of IMG_7435.jpg'
+import aceVK_1 from '../assets/images/Ace_Vasant_Kunj/IMG_8772.jpg'
+import aceVK_2 from '../assets/images/Ace_Vasant_Kunj/IMG_7451.jpg'
+import aceVK_3 from '../assets/images/Ace_Vasant_Kunj/IMG_7435.jpg'
 
 type MouseImageTrailProps = {
   children: React.ReactNode
