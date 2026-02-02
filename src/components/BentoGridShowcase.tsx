@@ -203,9 +203,9 @@ const BentoGridShowcase: React.FC = () => {
             <img 
               src={item.imageSrc} 
               alt={`ACE STAYZ property image ${item.id}`} 
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 opacity-0 transition-opacity duration-300 bg-black/10 group-hover:opacity-100"></div>
           </div>
         )
       case 'text':
@@ -214,7 +214,7 @@ const BentoGridShowcase: React.FC = () => {
             className={`flex items-center justify-center p-8 rounded-2xl shadow-lg group-hover:shadow-2xl transition-all duration-500 ${item.textColor} ${item.spanClasses} group-hover:scale-105`}
             style={{ backgroundColor: item.bgColor }}
           >
-            <p className="text-xl font-bold text-center leading-tight">{item.content}</p>
+            <p className="text-xl font-bold leading-tight text-center">{item.content}</p>
           </div>
         )
       case 'logo':
@@ -223,13 +223,13 @@ const BentoGridShowcase: React.FC = () => {
             <img 
               src={item.logoSrc} 
               alt={`Logo ${item.id}`} 
-              className="max-h-16 max-w-full object-contain filter drop-shadow-sm"
+              className="object-contain max-w-full max-h-16 filter drop-shadow-sm"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
                 const parent = target.parentElement;
                 if (parent) {
-                  parent.innerHTML = `<div class="text-gray-500 text-lg font-semibold">Logo</div>`;
+                  parent.innerHTML = `<div class="text-lg font-semibold text-gray-500">Logo</div>`;
                 }
               }}
             />
@@ -242,7 +242,7 @@ const BentoGridShowcase: React.FC = () => {
               <img 
                 src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png" 
                 alt="Google Logo" 
-                className="h-8 mb-4 object-contain filter drop-shadow-sm"
+                className="object-contain mb-4 h-8 filter drop-shadow-sm"
               />
             )}
             {item.rating && (
@@ -254,7 +254,7 @@ const BentoGridShowcase: React.FC = () => {
                 ))}
               </div>
             )}
-            <p className="text-base text-center mb-3 font-medium leading-relaxed">"{item.reviewText}"</p>
+            <p className="mb-3 text-base font-medium leading-relaxed text-center">"{item.reviewText}"</p>
             <p className="text-sm font-semibold text-gray-600">- {item.reviewerName}</p>
           </div>
         )
@@ -264,9 +264,9 @@ const BentoGridShowcase: React.FC = () => {
             className={`flex flex-col items-center justify-center p-8 rounded-2xl shadow-lg group-hover:shadow-2xl transition-all duration-500 ${item.textColor} ${item.spanClasses} group-hover:scale-105`}
             style={{ backgroundColor: item.bgColor }}
           >
-            <div className="text-6xl mb-4 animate-pulse">🏆</div>
-            <p className="text-base font-bold text-center mb-3 leading-tight">{item.awardTitle}</p>
-            <p className="text-sm text-center opacity-90 font-medium">{item.awardSubtitle}</p>
+            <div className="mb-4 text-6xl animate-pulse">🏆</div>
+            <p className="mb-3 text-base font-bold leading-tight text-center">{item.awardTitle}</p>
+            <p className="text-sm font-medium text-center opacity-90">{item.awardSubtitle}</p>
           </div>
         )
       default:
@@ -276,14 +276,14 @@ const BentoGridShowcase: React.FC = () => {
 
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#4B9CD3' }}>
-            What people say about AceStayz
+    <section className="px-4 py-24 w-full bg-gray-50 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-20 text-center">
+          <h2 className="mb-6 text-5xl font-bold md:text-6xl" style={{ color: '#4B9CD3' }}>
+          Hear From Our Dear Guests
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Hear from our happy guests and see why they love staying with us.
+          <p className="mx-auto max-w-4xl text-xl leading-relaxed text-gray-600">
+          Hear from our happy Stayerz and see why they love Ace Stayz.
           </p>
         </div>
 
@@ -298,8 +298,8 @@ const BentoGridShowcase: React.FC = () => {
             disabled={!canGoPrevious}
             className={`absolute left-6 top-1/2 transform -translate-y-1/2 z-10 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm ${
               canGoPrevious 
-                ? 'bg-white/90 shadow-2xl hover:shadow-3xl text-gray-700 hover:text-gray-900 hover:scale-110 border border-gray-200' 
-                : 'bg-gray-100/50 text-gray-400 cursor-not-allowed'
+                ? 'text-gray-700 border border-gray-200 shadow-2xl bg-white/90 hover:shadow-3xl hover:text-gray-900 hover:scale-110' 
+                : 'text-gray-400 cursor-not-allowed bg-gray-100/50'
             }`}
             aria-label="Previous slide"
           >
@@ -313,8 +313,8 @@ const BentoGridShowcase: React.FC = () => {
             disabled={!canGoNext}
             className={`absolute right-6 top-1/2 transform -translate-y-1/2 z-10 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm ${
               canGoNext 
-                ? 'bg-white/90 shadow-2xl hover:shadow-3xl text-gray-700 hover:text-gray-900 hover:scale-110 border border-gray-200' 
-                : 'bg-gray-100/50 text-gray-400 cursor-not-allowed'
+                ? 'text-gray-700 border border-gray-200 shadow-2xl bg-white/90 hover:shadow-3xl hover:text-gray-900 hover:scale-110' 
+                : 'text-gray-400 cursor-not-allowed bg-gray-100/50'
             }`}
             aria-label="Next slide"
           >

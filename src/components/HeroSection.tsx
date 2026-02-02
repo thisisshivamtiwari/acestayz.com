@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { allHotels, locationData } from '../utils/hotelData'
+import heroVideo from '../assets/images/herSecionVid.mp4'
+
+const ROTATING_PHRASES = ['For Celebrations,', 'For Corporate,']
 
 const HeroSection: React.FC = () => {
   const [featuredHotels, setFeaturedHotels] = useState<typeof allHotels>([])
   const [searchQuery, setSearchQuery] = useState('')
   const [availableCities, setAvailableCities] = useState<string[]>([])
+  const [typewriterText, setTypewriterText] = useState('')
+  const [phraseIndex, setPhraseIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [cityTypewriterText, setCityTypewriterText] = useState('')
+  const [cityPhraseIndex, setCityPhraseIndex] = useState(0)
+  const [cityIsDeleting, setCityIsDeleting] = useState(false)
 
   useEffect(() => {
     const loadFeaturedHotels = () => {
@@ -111,6 +120,61 @@ const HeroSection: React.FC = () => {
     }
   }, [])
 
+  // Typewriter effect: cycle between "For Celebrations," and "For Corporate,"
+  useEffect(() => {
+    const phrase = ROTATING_PHRASES[phraseIndex]
+    const typeDelay = isDeleting ? 50 : 100
+    const pauseBeforeDelete = 2000
+    const isPaused = !isDeleting && typewriterText.length === phrase.length
+
+    const timeout = window.setTimeout(() => {
+      if (!isDeleting) {
+        if (typewriterText.length < phrase.length) {
+          setTypewriterText(phrase.slice(0, typewriterText.length + 1))
+        } else {
+          setIsDeleting(true)
+        }
+      } else {
+        if (typewriterText.length > 0) {
+          setTypewriterText(typewriterText.slice(0, -1))
+        } else {
+          setPhraseIndex((i) => (i + 1) % ROTATING_PHRASES.length)
+          setIsDeleting(false)
+        }
+      }
+    }, isPaused ? pauseBeforeDelete : typeDelay)
+
+    return () => window.clearTimeout(timeout)
+  }, [typewriterText, phraseIndex, isDeleting])
+
+  // Cities typewriter: cycle through Navbar cities below search bar
+  const citiesForTypewriter = availableCities.length > 0 ? availableCities : ['Delhi', 'Gurugram']
+  useEffect(() => {
+    if (citiesForTypewriter.length === 0) return
+    const phrase = citiesForTypewriter[cityPhraseIndex]
+    const typeDelay = cityIsDeleting ? 50 : 80
+    const pauseBeforeDelete = 1500
+
+    const timeout = window.setTimeout(() => {
+      if (!cityIsDeleting) {
+        if (cityTypewriterText.length < phrase.length) {
+          setCityTypewriterText(phrase.slice(0, cityTypewriterText.length + 1))
+        } else {
+          setCityIsDeleting(true)
+        }
+      } else {
+        if (cityTypewriterText.length > 0) {
+          setCityTypewriterText(cityTypewriterText.slice(0, -1))
+        } else {
+          setCityPhraseIndex((i) => (i + 1) % citiesForTypewriter.length)
+          setCityIsDeleting(false)
+        }
+      }
+    }, cityTypewriterText.length === phrase.length && !cityIsDeleting ? pauseBeforeDelete : typeDelay)
+
+    return () => window.clearTimeout(timeout)
+  }, [cityTypewriterText, cityPhraseIndex, cityIsDeleting, availableCities])
+
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // Handle search functionality here
@@ -122,35 +186,41 @@ const HeroSection: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+    <section className="flex overflow-hidden relative justify-center items-center min-h-screen">
+      {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60 z-10"></div>
-        <div 
-          className="w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            //backgroundImage: `url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670')`
-            backgroundImage: `url('https://images.unsplash.com/photo-1586611292717-f828b167408c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2274')`
-          }}
-        ></div>
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
+        <video
+          className="object-cover w-full h-full"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
       </div>
 
       {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-20 px-4 mx-auto w-full max-w-7xl sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-12 items-center lg:grid-cols-2">
           {/* Left Content */}
-          <div className="text-white space-y-8">
+          <div className="space-y-8 text-white">
             {/* Main Headline */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="block">Premium</span>
-                <span className="block">Accommodation,</span>
-                <span className="block" style={{color: '#4B9CD3'}}>hello acestayz</span>
+              <h1 className="text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
+                <span className="block min-h-[1.2em]">
+                  {typewriterText}
+                  <span className="animate-pulse inline-block w-0.5 h-[0.9em] align-middle ml-0.5 bg-white rounded-sm" aria-hidden />
+                </span>
+                <span className="block">
+                  Hello{' '}
+                  <span className="font-bold" style={{ color: '#D4AF37' }}>ACE STAYZ.</span>
+                </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-200 leading-relaxed max-w-2xl">
-                A platform for premium hotels and homestays for intelligent travelers, 
-                at the best locations & rates across India.
+              <p className="max-w-2xl text-xl leading-relaxed text-gray-200 md:text-2xl">
+                Your go-to platform for aparthotels and homestays for new-gen travelers, expanding rapidly all across India.
               </p>
             </div>
 
@@ -158,9 +228,9 @@ const HeroSection: React.FC = () => {
             <div className="max-w-2xl">
               <form onSubmit={handleSearchSubmit} className="relative">
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <div className="flex absolute inset-y-0 left-0 items-center pl-4 pointer-events-none">
                     <svg
-                      className="h-6 w-6 text-gray-400"
+                      className="w-6 h-6 text-gray-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -177,12 +247,12 @@ const HeroSection: React.FC = () => {
                     type="text"
                     value={searchQuery}
                     onChange={handleSearchChange}
-                    placeholder={`Book a Stay in ${availableCities.length > 0 ? availableCities.join(', ') : 'Delhi, Gurugram'}...`}
-                    className="w-full pl-12 pr-4 py-4 text-lg bg-white/95 backdrop-blur-sm border-0 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:bg-white transition-all duration-300 shadow-2xl" style={{'--tw-ring-color': '#4B9CD3'} as React.CSSProperties}
+                    placeholder={`Book a Stay in ${cityTypewriterText}...`}
+                    className="py-4 pr-4 pl-12 w-full text-lg placeholder-gray-500 text-gray-900 rounded-2xl border-0 shadow-2xl backdrop-blur-sm transition-all duration-300 bg-white/95 focus:outline-none focus:ring-4 focus:bg-white" style={{'--tw-ring-color': '#4B9CD3'} as React.CSSProperties}
                   />
                   <button
                     type="submit"
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white px-6 py-2 rounded-xl font-semibold transition-colors duration-200" style={{backgroundColor: '#4B9CD3'}} onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#001a4d'} onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#4B9CD3'}
+                    className="absolute right-2 top-1/2 px-6 py-2 font-semibold text-white rounded-xl transition-colors duration-200 transform -translate-y-1/2" style={{backgroundColor: '#4B9CD3'}} onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#001a4d'} onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#4B9CD3'}
                   >
                     Search
                   </button>
@@ -224,25 +294,25 @@ const HeroSection: React.FC = () => {
               {featuredHotels[0] && (
                 <Link 
                   to={`/hotel/${featuredHotels[0].slug}`}
-                  className="absolute top-0 right-0 w-80 bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 p-4 pb-3 transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300 block overflow-hidden"
+                  className="block overflow-hidden absolute top-0 right-0 p-4 pb-3 w-80 rounded-3xl border backdrop-blur-sm transition-all duration-300 transform rotate-3 bg-white/10 border-white/20 hover:rotate-0 hover:scale-105"
                 >
-                  <div className="h-40 rounded-2xl mb-2 overflow-hidden">
+                  <div className="overflow-hidden mb-2 h-40 rounded-2xl">
                     <img 
                       src={featuredHotels[0].image} 
                       alt={featuredHotels[0].title} 
-                      className="w-full h-full object-cover"
+                      className="object-cover w-full h-full"
                     />
                   </div>
                   <h3 className="text-white font-semibold text-sm mb-1.5 truncate">{featuredHotels[0].title}</h3>
-                  <p className="text-gray-300 text-xs mb-2 line-clamp-1 overflow-hidden">{featuredHotels[0].description}</p>
-                  <div className="flex items-center justify-end mb-1">
-                    {/* <div className="font-bold text-base" style={{color: '#4B9CD3'}}>₹{featuredHotels[0].price?.toLocaleString()}/night</div> */}
+                  <p className="overflow-hidden mb-2 text-xs text-gray-300 line-clamp-1">{featuredHotels[0].description}</p>
+                  <div className="flex justify-end items-center mb-1">
+                    {/* <div className="text-base font-bold" style={{color: '#4B9CD3'}}>₹{featuredHotels[0].price?.toLocaleString()}/night</div> */}
                     <span className="inline-block text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap" style={{backgroundColor: '#4B9CD3'}}>
                       Book Stay
                     </span>
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-gray-300 overflow-hidden">
-                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="flex overflow-hidden gap-1 items-center text-xs text-gray-300">
+                    <svg className="flex-shrink-0 w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
                     <span className="truncate">{featuredHotels[0].location}</span>
@@ -254,25 +324,25 @@ const HeroSection: React.FC = () => {
               {featuredHotels[1] && (
                 <Link 
                   to={`/hotel/${featuredHotels[1].slug}`}
-                  className="absolute top-20 left-0 w-72 bg-white/10 backdrop-blur-sm rounded-3xl border border-white/20 p-4 pb-3 transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 block overflow-hidden"
+                  className="block overflow-hidden absolute left-0 top-20 p-4 pb-3 w-72 rounded-3xl border backdrop-blur-sm transition-all duration-300 transform -rotate-2 bg-white/10 border-white/20 hover:rotate-0 hover:scale-105"
                 >
-                  <div className="h-32 rounded-2xl mb-2 overflow-hidden">
+                  <div className="overflow-hidden mb-2 h-32 rounded-2xl">
                     <img 
                       src={featuredHotels[1].image} 
                       alt={featuredHotels[1].title} 
-                      className="w-full h-full object-cover"
+                      className="object-cover w-full h-full"
                     />
                   </div>
                   <h3 className="text-white font-semibold text-sm mb-1.5 truncate">{featuredHotels[1].title}</h3>
-                  <p className="text-gray-300 text-xs mb-2 line-clamp-1 overflow-hidden">{featuredHotels[1].description}</p>
-                  <div className="flex items-center justify-end mb-1">
-                    {/* <div className="font-bold text-base" style={{color: '#4B9CD3'}}>₹{featuredHotels[1].price?.toLocaleString()}/night</div> */}
+                  <p className="overflow-hidden mb-2 text-xs text-gray-300 line-clamp-1">{featuredHotels[1].description}</p>
+                  <div className="flex justify-end items-center mb-1">
+                    {/* <div className="text-base font-bold" style={{color: '#4B9CD3'}}>₹{featuredHotels[1].price?.toLocaleString()}/night</div> */}
                     <span className="inline-block text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap" style={{backgroundColor: '#4B9CD3'}}>
                       Book Stay
                     </span>
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-gray-300 overflow-hidden">
-                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="flex overflow-hidden gap-1 items-center text-xs text-gray-300">
+                    <svg className="flex-shrink-0 w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
                     <span className="truncate">{featuredHotels[1].location}</span>
@@ -285,7 +355,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute bottom-8 left-1/2 z-20 transform -translate-x-1/2">
         <div className="animate-bounce">
           <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />

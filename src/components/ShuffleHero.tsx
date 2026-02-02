@@ -105,9 +105,9 @@ const ShuffleHero: React.FC = () => {
     <section className="grid grid-cols-1 gap-8 items-center px-4 py-12 mx-auto w-full max-w-6xl sm:px-6 lg:px-8 md:grid-cols-2">
       <div>
         <span className="block mb-4 text-xs font-medium md:text-sm" style={{ color: '#4B9CD3' }}>Discover more</span>
-        <h3 className="text-4xl font-semibold text-gray-900 md:text-6xl">Stays that inspire</h3>
+        <h3 className="text-4xl font-semibold text-gray-900 md:text-6xl" style={{ color: '#4B9CD3' }}>Stays You’ll Crave</h3>
         <p className="my-4 text-base text-gray-700 md:text-lg md:my-6">
-          From boutique homestays to premium suites, explore curated places crafted for comfort and style.
+            From boutique homestays to hybrid suites, explore curated places crafted for comfort and style.
         </p>
         <button
           className="px-5 py-2.5 rounded-xl font-semibold transition-colors duration-200 text-white"
