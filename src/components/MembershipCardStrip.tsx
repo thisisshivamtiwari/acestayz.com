@@ -1,4 +1,5 @@
 import React from 'react'
+import logoImage from '../assets/images/logo.svg'
 
 const GOLD = '#D4AF37'
 const BRAND_BLUE = '#4B9CD3'
@@ -81,11 +82,13 @@ const FlippableMembershipCard = React.forwardRef<HTMLDivElement, FlippableMember
                 </div>
               </div>
               <p className="self-end pr-4 text-[10px] font-semibold uppercase opacity-80">Security</p>
-              <div className="mt-auto p-4 text-center">
-                <span className="text-xs font-bold tracking-wider" style={{ color: GOLD }}>
-                  ACE STAYZ
-                </span>
-                <p className="text-[10px] opacity-80 mt-0.5">Membership Card</p>
+              <div className="mt-auto p-4 flex flex-col items-center justify-center gap-0.5">
+                <img
+                  src={logoImage}
+                  alt="AceStayz"
+                  className="h-7 w-auto object-contain"
+                />
+                <p className="text-[10px] opacity-80">Membership Card</p>
               </div>
             </div>
           </div>
@@ -104,11 +107,13 @@ const MembershipCardStrip: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Title + Description */}
           <div className="space-y-4 order-2 lg:order-1">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              <span className="font-bold" style={{ color: GOLD }}>
-                ACE STAYZ
-              </span>
-              <span className="ml-2" style={{ color: BRAND_BLUE }}>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight flex items-center gap-3 whitespace-nowrap">
+              <img
+                src={logoImage}
+                alt="AceStayz"
+                className="h-12 w-auto md:h-16 object-contain"
+              />
+              <span style={{ color: BRAND_BLUE }}>
                 Membership Card
               </span>
             </h2>

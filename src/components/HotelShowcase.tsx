@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { allHotels } from '../utils/hotelData'
+import firstHotelImage from '../assets/images/ACE_55/ChatGPTImage.jpg'
 
 const HotelShowcase: React.FC = () => {
   // Get unique locations
@@ -22,7 +23,7 @@ const HotelShowcase: React.FC = () => {
 
         {/* Hotel Cards Grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {allHotels.map((hotel) => (
+          {allHotels.map((hotel, index) => (
             <Link 
               to={`/hotel/${hotel.slug}`}
               key={hotel.id} 
@@ -30,7 +31,7 @@ const HotelShowcase: React.FC = () => {
             >
               <div className="overflow-hidden h-64">
                 <img 
-                  src={hotel.image} 
+                  src={index === 0 ? firstHotelImage : hotel.image} 
                   alt={hotel.title}
                   className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                 />

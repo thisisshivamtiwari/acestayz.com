@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import logoImage from '../assets/images/logo.svg'
 import delhiImage from '../assets/images/navbarImages/delhi_navbar.png'
 import gurguggramImage from '../assets/images/navbarImages/gurgugram_navbar.png'
 
@@ -42,8 +43,12 @@ const Navigation: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-white text-2xl font-bold">
-              acestayz
+            <Link to="/" className="flex items-center" aria-label="AceStayz home">
+              <img
+                src={logoImage}
+                alt="AceStayz"
+                className="h-10 w-auto"
+              />
             </Link>
           </div>
 

@@ -23,6 +23,13 @@ import aceVK_3 from '../assets/images/Ace_Vasant_Kunj/IMG_7451.jpg'
 import aceVK_4 from '../assets/images/Ace_Vasant_Kunj/IMG_7435.jpg'
 import aceVK_5 from '../assets/images/Ace_Vasant_Kunj/IMG_3570.jpg'
 
+// ACE Gautam Nagar Images
+import gautamNagar_1 from '../assets/images/ACE_GautamNagar/1.png'
+import gautamNagar_2 from '../assets/images/ACE_GautamNagar/2.png'
+import gautamNagar_3 from '../assets/images/ACE_GautamNagar/3.png'
+import gautamNagar_4 from '../assets/images/ACE_GautamNagar/4.png'
+import gautamNagar_5 from '../assets/images/ACE_GautamNagar/5.jpg'
+
 export interface LocationData {
   name: string
   fullLocationName: string
@@ -104,6 +111,17 @@ export const allHotels: Hotel[] = [
     price: 4200,
     amenities: ['Free WiFi', 'Air Conditioning', 'Kitchen', 'Room Service'],
     slug: 'acestayz-vasant-kunj-delhi',
+  },
+  {
+    id: 4,
+    image: gautamNagar_1,
+    title: 'Acestayz Gautam Nagar Delhi',
+    location: 'Gautam Nagar, Delhi',
+    description: 'Comfortable studio apartments on Gautam Nagar Rd, Yusuf Sarai with modern amenities and free parking.',
+    rating: 4.8,
+    price: 3800,
+    amenities: ['Free WiFi', 'Air Conditioning', 'Kitchen', '24-hour Front Desk', 'Free Parking'],
+    slug: 'acestayz-gautam-nagar-delhi',
   }
 ]
 
@@ -364,6 +382,97 @@ export const detailedHotels: DetailedHotel[] = [
     totalReviews: 203,
     bookingUrl: 'https://www.zotel.ai/hotels/ace-stayz',
     mapUrl: 'https://maps.app.goo.gl/YPTHFkAd6mgQpFGZA'
+  },
+  {
+    id: 4,
+    slug: 'acestayz-gautam-nagar-delhi',
+    title: 'Acestayz Gautam Nagar Delhi',
+    location: 'Gautam Nagar, Delhi',
+    fullAddress: '135/5/1 Gautam Nagar Rd, Yusuf Sarai New Delhi, DELHI - 110049',
+    image: gautamNagar_1,
+    images: [
+      gautamNagar_1,
+      gautamNagar_2,
+      gautamNagar_3,
+      gautamNagar_4,
+      gautamNagar_5,
+    ],
+    description: 'Comfortable studio apartments on Gautam Nagar Rd, Yusuf Sarai with modern amenities and free parking.',
+    rating: 4.8,
+    price: 3800,
+    amenities: ['Free WiFi', 'Air Conditioning', 'Kitchen', '24-hour Front Desk', 'Free Parking'],
+    roomTypes: [
+      {
+        id: 1,
+        name: 'Classic',
+        description: 'Comfortable classic room with modern amenities',
+        image: gautamNagar_2,
+        maxOccupancy: 2,
+        size: '300 sq ft',
+        basePrice: 3800,
+        mealPlans: [
+          {
+            id: 1,
+            name: 'Room Only',
+            description: 'Stay without meals',
+            price: 0,
+            includes: ['Room accommodation', 'Free WiFi', 'Air conditioning', 'Kitchen']
+          }
+        ]
+      },
+      {
+        id: 2,
+        name: 'Signature',
+        description: 'Signature room with premium amenities',
+        image: gautamNagar_3,
+        maxOccupancy: 2,
+        size: '350 sq ft',
+        basePrice: 4500,
+        mealPlans: [
+          {
+            id: 1,
+            name: 'Room Only',
+            description: 'Stay without meals',
+            price: 0,
+            includes: ['Room accommodation', 'Free WiFi', 'Air conditioning', 'Kitchen']
+          }
+        ]
+      }
+    ],
+    allAmenities: [
+      'Free Wi-Fi',
+      '24-hour Front Desk',
+      'Washing Machine Provided',
+      'Room Service',
+      'Air Conditioning',
+      'Kitchen',
+      'Free Parking',
+      'Accessible Property'
+    ],
+    specialities: [
+      '35 Total Rooms',
+      '28 Classic Rooms',
+      '7 Signature Rooms',
+      'Yusuf Sarai Location',
+      'Modern Kitchen Facilities'
+    ],
+    checkInTime: '2:00 PM',
+    checkOutTime: '11:00 AM',
+    policies: [
+      'Valid ID proof required at check-in',
+      'No smoking inside rooms',
+      'Pets not allowed',
+      'Early check-in subject to availability'
+    ],
+    nearbyAttractions: [
+      'Yusuf Sarai - 2 min walk',
+      'Green Park Metro - 10 min drive',
+      'Select Citywalk Mall - 15 min drive',
+      'IGI Airport - 25 min drive'
+    ],
+    totalReviews: 120,
+    bookingUrl: 'https://www.zotel.ai/hotels/acestayz-gautam-nagar-delhi',
+    mapUrl: 'https://maps.app.goo.gl/qjtZUTXxCJ7pQSWZ8'
   }
 ]
 
@@ -389,8 +498,8 @@ export const locationData: { [key: string]: LocationData } = {
     hotels: allHotels.filter(h => h.location.includes('Delhi')),
     highlights: ['Historic Sites', 'Cultural Hub', 'Shopping Paradise'],
     bestTimeToVisit: 'October to March',
-    averageRating: 4.7,
-    totalReviews: 203
+    averageRating: 4.75,
+    totalReviews: 323
   }
 }
 

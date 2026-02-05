@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { allHotels, locationData } from '../utils/hotelData'
 import heroVideo from '../assets/images/herSecionVid.mp4'
+import logoImage from '../assets/images/logo.svg'
+import firstCardImage from '../assets/images/ACE_55/ChatGPTImage.jpg'
 
-const ROTATING_PHRASES = ['For Celebrations,', 'For Corporate,']
+const ROTATING_PHRASES = ['Celebrations,', 'Corporate,']
 
 const HeroSection: React.FC = () => {
   const [featuredHotels, setFeaturedHotels] = useState<typeof allHotels>([])
@@ -189,7 +191,7 @@ const HeroSection: React.FC = () => {
     <section className="flex overflow-hidden relative justify-center items-center min-h-screen">
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/60 via-black/40 to-black/60" aria-hidden />
         <video
           className="object-cover w-full h-full"
           autoPlay
@@ -210,12 +212,16 @@ const HeroSection: React.FC = () => {
             <div className="space-y-4">
               <h1 className="text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
                 <span className="block min-h-[1.2em]">
-                  {typewriterText}
+                  For {typewriterText}
                   <span className="animate-pulse inline-block w-0.5 h-[0.9em] align-middle ml-0.5 bg-white rounded-sm" aria-hidden />
                 </span>
-                <span className="block">
+                <span className="flex gap-3 items-center whitespace-nowrap">
                   Hello{' '}
-                  <span className="font-bold" style={{ color: '#D4AF37' }}>ACE STAYZ.</span>
+                  <img
+                    src={logoImage}
+                    alt="AceStayz"
+                    className="inline-block w-auto h-20 align-middle md:h-28 lg:h-36"
+                  />
                 </span>
               </h1>
               
@@ -328,7 +334,7 @@ const HeroSection: React.FC = () => {
                 >
                   <div className="overflow-hidden mb-2 h-32 rounded-2xl">
                     <img 
-                      src={featuredHotels[1].image} 
+                      src={firstCardImage} 
                       alt={featuredHotels[1].title} 
                       className="object-cover w-full h-full"
                     />

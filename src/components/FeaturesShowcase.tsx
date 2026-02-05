@@ -1,7 +1,7 @@
 import React from 'react'
 
-// ACE 55 Images
-import ace55_1 from '../assets/images/ACE_55/IMG_3606-2.jpg'
+// ACE 55 Images (ChatGPTImage used for Hybrid Stayz card)
+import hybridStayzImage from '../assets/images/ACE_55/ChatGPTImage.jpg'
 
 // ACE 57 Images
 import ace57_1 from '../assets/images/ACE_57/IMG_5838-2.jpg'
@@ -22,8 +22,8 @@ const features: Feature[] = [
     id: 1,
     title: 'Hybrid Stayz',
     description: 'Our hybrid hotels offer you the comfort of home with the Convenience of a hotel. With a fully furnished kitchenettes that blend convenience with comfort For more uninturrupted stays',
-    image: ace55_1,
-    alt: 'Premium hotel room at ACE Stayz Sector 55 Gurugram'
+    image: hybridStayzImage,
+    alt: 'Premium hybrid stay at ACE Stayz'
   },
   {
     id: 2,

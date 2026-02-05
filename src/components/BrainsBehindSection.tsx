@@ -1,7 +1,7 @@
 import React from 'react'
-import adityaSirImage from '../assets/images/adityaSir.png'
 
 const BRAND_BLUE = '#4B9CD3'
+const YOUTUBE_VIDEO_ID = 't2JmtDjXDN8'
 
 const BrainsBehindSection: React.FC = () => {
   return (
@@ -18,31 +18,16 @@ const BrainsBehindSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Right Column - Image with Pagination */}
+          {/* Right Column - YouTube Video (thumbnail shown until play) */}
           <div className="order-1 lg:order-2">
-            <div className="relative">
-              <div className="w-full h-[500px] overflow-hidden rounded-lg shadow-lg">
-                <img 
-                  src={adityaSirImage} 
-                  alt="Aditya Parashar - Co-founder of Ace Stayz"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              
-              {/* Pagination Dots */}
-              <div className="flex justify-center gap-2 mt-6">
-                {[1, 2, 3, 4, 5].map((dot) => (
-                  <div
-                    key={dot}
-                    className={`h-2 w-2 rounded-full transition-colors ${
-                      dot === 1 
-                        ? '' 
-                        : 'bg-gray-300'
-                    }`}
-                    style={dot === 1 ? { backgroundColor: BRAND_BLUE } : {}}
-                  />
-                ))}
-              </div>
+            <div className="relative w-full overflow-hidden rounded-lg shadow-lg aspect-video">
+              <iframe
+                src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}`}
+                title="Brains Behind Ace Stayz - YouTube video"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>
