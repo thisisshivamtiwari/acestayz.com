@@ -13,7 +13,7 @@ import aceVK_1 from '../assets/images/Ace_Vasant_Kunj/IMG_8772.jpg'
  
 import reviewImg2 from '../assets/images/reviewimg2.svg'
 
-import reviewImg3 from '../assets/images/reviewimg3.svg'
+import reviewImg3 from '../assets/images/reviewImg3.svg'
 const BRAND_BLUE = '#4B9CD3'
 
 type GridItem = {
