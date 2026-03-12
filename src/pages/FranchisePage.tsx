@@ -192,7 +192,7 @@ const FranchisePage: React.FC = () => {
     {
       icon: <FiAward />,
       title: 'Brand Recognition',
-      description: 'Leverage our established reputation with 4.9+ ratings and 500+ satisfied guests'
+      description: 'Leverage our established reputation with 4.9+ ratings and 1M+ satisfied guests'
     },
     {
       icon: <FiUsers />,
@@ -476,35 +476,35 @@ const FranchisePage: React.FC = () => {
           <div className="rounded-[2.25rem] bg-white/95 shadow-2xl border border-blue-100 px-6 py-8 md:px-10 md:py-10">
             {/* Top metrics grid */}
             <div className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-2 md:gap-6">
-              <div className="px-6 py-5 text-center rounded-3xl bg-blue-50">
+              <div className="px-6 py-5 text-center bg-blue-50 rounded-3xl">
                 <p className="text-xl font-bold text-gray-900 md:text-2xl">
                   ₹{Math.round(yearlyRevenue).toLocaleString('en-IN')}
                 </p>
-                <p className="mt-1 text-xs font-medium tracking-wide uppercase text-gray-600 md:text-sm">
+                <p className="mt-1 text-xs font-medium tracking-wide text-gray-600 uppercase md:text-sm">
                   Revenue Yearly
                 </p>
               </div>
-              <div className="px-6 py-5 text-center rounded-3xl bg-blue-50">
+              <div className="px-6 py-5 text-center bg-blue-50 rounded-3xl">
                 <p className="text-xl font-bold text-gray-900 md:text-2xl">
                   ₹{Math.round(yearlyExpenses).toLocaleString('en-IN')}
                 </p>
-                <p className="mt-1 text-xs font-medium tracking-wide uppercase text-gray-600 md:text-sm">
+                <p className="mt-1 text-xs font-medium tracking-wide text-gray-600 uppercase md:text-sm">
                   Expense Yearly
                 </p>
               </div>
-              <div className="px-6 py-5 text-center rounded-3xl bg-blue-50">
+              <div className="px-6 py-5 text-center bg-blue-50 rounded-3xl">
                 <p className="text-xl font-bold text-gray-900 md:text-2xl">
                   {(occupancyRate * 100).toFixed(1)}%
                 </p>
-                <p className="mt-1 text-xs font-medium tracking-wide uppercase text-gray-600 md:text-sm">
+                <p className="mt-1 text-xs font-medium tracking-wide text-gray-600 uppercase md:text-sm">
                   Occupancy
                 </p>
               </div>
-              <div className="px-6 py-5 text-center rounded-3xl bg-blue-50">
+              <div className="px-6 py-5 text-center bg-blue-50 rounded-3xl">
                 <p className="text-xl font-bold text-gray-900 md:text-2xl">
                   ₹{Math.round(initialInvestment).toLocaleString('en-IN')}
                 </p>
-                <p className="mt-1 text-xs font-medium tracking-wide uppercase text-gray-600 md:text-sm">
+                <p className="mt-1 text-xs font-medium tracking-wide text-gray-600 uppercase md:text-sm">
                   Initial Investment
                 </p>
               </div>
@@ -529,8 +529,8 @@ const FranchisePage: React.FC = () => {
                           onClick={() => setSelectedLocationCategory(key)}
                           className={`flex flex-col items-start rounded-2xl border-2 px-4 py-3 text-left transition-all text-xs sm:text-sm ${
                             isActive
-                              ? 'bg-blue-600 text-white border-blue-600 shadow-md'
-                              : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50'
+                              ? 'text-white bg-blue-600 border-blue-600 shadow-md'
+                              : 'text-gray-700 bg-gray-50 border-gray-200 hover:border-blue-300 hover:bg-blue-50'
                           }`}
                         >
                           <span className="font-semibold">{config.label}</span>
@@ -595,8 +595,8 @@ const FranchisePage: React.FC = () => {
                     )
                   })}
                 </div>
-                <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-                  <div className="flex items-center gap-2">
+                <div className="flex flex-col gap-2 mt-4 sm:flex-row sm:items-center sm:gap-4">
+                  <div className="flex gap-2 items-center">
                     <span className="text-sm text-gray-600">₹</span>
                     <input
                       type="number"
@@ -623,7 +623,7 @@ const FranchisePage: React.FC = () => {
                   Average Occupancy
                 </p>
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-                  <div className="flex items-center gap-2">
+                  <div className="flex gap-2 items-center">
                     <input
                       type="number"
                       min={0}
@@ -647,7 +647,7 @@ const FranchisePage: React.FC = () => {
                   Operating Expenses
                 </p>
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-                  <div className="flex items-center gap-2">
+                  <div className="flex gap-2 items-center">
                     <input
                       type="number"
                       min={0}
@@ -671,7 +671,7 @@ const FranchisePage: React.FC = () => {
                   Initial Investment
                 </p>
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-                  <div className="flex items-center gap-2">
+                  <div className="flex gap-2 items-center">
                     <span className="text-sm text-gray-600">₹</span>
                     <input
                       type="number"
@@ -702,7 +702,7 @@ const FranchisePage: React.FC = () => {
               <div className="text-sm text-gray-600">Years in Business</div>
             </div>
             <div className="text-center">
-              <div className="mb-2 text-5xl font-bold" style={{ color: '#4B9CD3' }}>500+</div>
+              <div className="mb-2 text-5xl font-bold" style={{ color: '#4B9CD3' }}>1M+</div>
               <div className="text-sm text-gray-600">Satisfied Guests</div>
             </div>
             <div className="text-center">
@@ -805,19 +805,19 @@ const FranchisePage: React.FC = () => {
                   <FiDollarSign className="w-6 h-6" />
                 </div>
                 <div className="space-y-3 text-[#4B9CD3]">
-                  <div className="flex items-center gap-2">
+                  <div className="flex gap-2 items-center">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[#4B9CD3]/5">
                       <FiDollarSign className="w-4 h-4" />
                     </span>
                     <span className="text-sm font-semibold">Guaranteed</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex gap-2 items-center">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[#4B9CD3]/5">
                       <FiTrendingUp className="w-4 h-4" />
                     </span>
                     <span className="text-sm font-semibold">Monthly</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex gap-2 items-center">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[#4B9CD3]/5">
                       <FiUsers className="w-4 h-4" />
                     </span>
@@ -845,13 +845,13 @@ const FranchisePage: React.FC = () => {
       {/* Meet Our Director Section */}
       <section className="py-20 bg-white">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="grid gap-12 items-center lg:grid-cols-2">
             {/* Left: Copy */}
             <div className="order-2 space-y-6 lg:order-1">
               <h2 className="text-4xl font-bold tracking-tight text-[#4B9CD3] sm:text-5xl">
                 Meet Our Director
               </h2>
-              <p className="text-lg leading-relaxed text-gray-700 max-w-xl">
+              <p className="max-w-xl text-lg leading-relaxed text-gray-700">
                 Built by Aditya Parasharr and Aashi Parashar in 2018. They are experienced hospitality
                 thinkers who value precision over promises. Ace Stayz blends smart locations, thoughtful
                 design, and operational discipline to deliver stays that are consistent, comfortable, and
@@ -876,7 +876,7 @@ const FranchisePage: React.FC = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-b from-white via-blue-50/25 to-white">
+      <section className="overflow-hidden relative py-20 bg-gradient-to-b from-white to-white via-blue-50/25">
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#4B9CD3] via-[#7C3AED] to-[#4B9CD3]" aria-hidden />
         <div className="px-4 mx-auto max-w-6xl sm:px-6 lg:px-8">
           <h2
@@ -903,7 +903,7 @@ const FranchisePage: React.FC = () => {
 
             {/* Year markers */}
             <div className="flex justify-center md:justify-start">
-              <div className="relative flex flex-col items-start">
+              <div className="flex relative flex-col items-start">
                 <div className="absolute left-4 top-3 bottom-10 w-px bg-gradient-to-b from-[#4B9CD3] via-[#4B9CD3]/40 to-transparent" aria-hidden />
 
                 {TIMELINE_YEARS.map((year, index) => {
@@ -945,11 +945,11 @@ const FranchisePage: React.FC = () => {
             {partnerTestimonials.map((partner) => (
               <figure
                 key={partner.name}
-                className="flex flex-col justify-between h-full overflow-hidden bg-white rounded-3xl shadow-xl"
+                className="flex overflow-hidden flex-col justify-between h-full bg-white rounded-3xl shadow-xl"
               >
                 <div className="flex flex-col items-center px-8 pt-10 pb-6">
-                  <div className="flex items-center justify-center w-20 h-20 mb-6 border-2 border-gray-300 rounded-full">
-                    <div className="w-10 h-10 border-2 border-gray-400 rounded-full" />
+                  <div className="flex justify-center items-center mb-6 w-20 h-20 rounded-full border-2 border-gray-300">
+                    <div className="w-10 h-10 rounded-full border-2 border-gray-400" />
                   </div>
                   <figcaption className="text-center">
                     <p className="text-sm font-semibold text-gray-900 uppercase">

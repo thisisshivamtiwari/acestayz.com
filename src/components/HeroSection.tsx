@@ -281,12 +281,12 @@ const HeroSection: React.FC = () => {
                 <div className="text-sm text-gray-300">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold" style={{color: '#4B9CD3'}}>500+</div>
+                <div className="text-3xl font-bold" style={{color: '#4B9CD3'}}>1M+</div>
                 <div className="text-sm text-gray-300">Happy Guests</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold" style={{color: '#4B9CD3'}}>
-                  {availableCities.length > 0 ? `${availableCities.length}+` : '2+'}
+                  {'6+'}
                 </div>
                 <div className="text-sm text-gray-300">Prime Locations</div>
               </div>

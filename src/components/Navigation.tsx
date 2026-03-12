@@ -47,7 +47,7 @@ const Navigation: React.FC = () => {
               <img
                 src={logoImage}
                 alt="AceStayz"
-                className="h-10 w-auto"
+                className="h-12 w-auto sm:h-14"
               />
             </Link>
           </div>
@@ -160,8 +160,20 @@ const Navigation: React.FC = () => {
             </div>
           </div>
 
+          {/* Right: Login button (desktop) */}
+          <div className="hidden md:flex flex-shrink-0 items-center">
+            <Link
+              to="/admin/login"
+              className="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:shadow-lg hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent"
+              style={{ backgroundColor: '#4B9CD3' }}
+              aria-label="Login"
+            >
+              Login
+            </Link>
+          </div>
+
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex-shrink-0">
             <button
               onClick={handleToggleMenu}
               className="text-white hover:text-gray-300 focus:outline-none focus:text-gray-300"
@@ -199,6 +211,13 @@ const Navigation: React.FC = () => {
                 className="text-white hover:text-gray-300 block px-3 py-2 text-base font-medium"
               >
                 Franchise Partner
+              </Link>
+              <Link
+                to="/admin/login"
+                className="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-md border-t border-white/20 mt-3 pt-4 w-full transition-all duration-200"
+                style={{ backgroundColor: '#4B9CD3' }}
+              >
+                Login
               </Link>
             </div>
           </div>

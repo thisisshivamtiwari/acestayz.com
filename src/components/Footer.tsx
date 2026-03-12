@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { FiInstagram, FiTwitter, FiYoutube, FiFacebook, FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
+import logoImage from '../assets/images/logo.svg'
 
 const Footer: React.FC = () => {
   const handleSocialClick = (platform: string) => {
@@ -20,14 +22,17 @@ const Footer: React.FC = () => {
           
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <div className="flex items-center mb-6">
-              <div className="flex justify-center items-center mr-3 w-10 h-10 bg-white rounded-lg shadow-lg">
-                <span className="font-serif text-xl font-bold" style={{ color: '#4B9CD3' }}>A</span>
-              </div>
-              <span className="font-serif text-2xl font-bold text-white">ACE STAYZ</span>
+            <div className="mb-6">
+              <Link to="/" className="inline-block" aria-label="Ace Stayz home">
+                <img
+                  src={logoImage}
+                  alt="Ace Stayz"
+                  className="w-auto h-14 sm:h-16"
+                />
+              </Link>
             </div>
             <p className="mb-6 font-sans leading-relaxed text-white/90">
-              Premium serviced apartments in Delhi NCR. Experience comfort, convenience, and style at prime locations across Gurugram and Delhi.
+            Modern Apart-hotels in Delhi NCR. Experience comfort, convenience, and style at prime locations across Gurugram and Delhi.
             </p>
             <div className="flex space-x-4">
               <a 
@@ -155,13 +160,13 @@ const Footer: React.FC = () => {
               <div className="flex items-start">
                 <FiMapPin className="flex-shrink-0 mt-1 mr-3 w-5 h-5 text-white" />
                 <div className="font-sans text-white/90">
-                  <p className="mb-2">Premium serviced apartments across Delhi NCR</p>
+                  <p className="mb-2">Modern Apart-hotels across Delhi NCR</p>
                   <p className="text-sm text-white/70">Gurugram • Delhi</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <FiPhone className="flex-shrink-0 mr-3 w-5 h-5 text-white" />
-                <a href="tel:+918860602929" className="font-sans transition-colors text-white/90 hover:text-white">+91 88606 02929</a>
+                <a href="tel:+919403890663" className="font-sans transition-colors text-white/90 hover:text-white">+91 94038 90663</a>
               </div>
               <div className="flex items-center">
                 <FiMail className="flex-shrink-0 mr-3 w-5 h-5 text-white" />
@@ -175,12 +180,15 @@ const Footer: React.FC = () => {
       {/* Bottom Footer */}
       <div className="relative z-10 border-t border-white/20">
         <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between md:flex-row text-center md:text-left">
-            <div className="font-sans text-sm text-white/80 mb-2 md:mb-0">
-              ©2026 ACE STAYZ - Premium Serviced Apartments
+          <div className="flex flex-col justify-between items-center text-center md:flex-row md:text-left">
+            <div className="mb-2 font-sans text-sm text-white/80 md:mb-0">
+              ©2026 ACE STAYZ - Modern Apart-hotels
             </div>
             <div className="font-sans text-sm text-white/80">
-              All Rights Reserved
+              <p>All Rights Reserved</p>
+              <p className="mt-1">
+                <span className="font-semibold text-white/90">Registration Number:</span> U55109UP2025PTC215341
+              </p>
             </div>
           </div>
         </div>

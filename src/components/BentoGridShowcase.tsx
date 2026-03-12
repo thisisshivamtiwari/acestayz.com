@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react'
 
 // ACE 55 Images
 import ace55_1 from '../assets/images/ACE_55/ChatGPTImage.jpg'
-import ace55_2 from '../assets/images/ACE_55/IMG_3570.jpg'
 
 // ACE 57 Images
 import ace57_1 from '../assets/images/ACE_57/IMG_5838-2.jpg'
@@ -10,8 +9,11 @@ import ace57_2 from '../assets/images/ACE_57/IMG_5779.jpg'
 
 // Ace Vasant Kunj Images
 import aceVK_1 from '../assets/images/Ace_Vasant_Kunj/IMG_8772.jpg'
-import aceVK_2 from '../assets/images/Ace_Vasant_Kunj/IMG_7451.jpg'
 
+ 
+import reviewImg2 from '../assets/images/reviewimg2.svg'
+
+import reviewImg3 from '../assets/images/reviewimg3.svg'
 const BRAND_BLUE = '#4B9CD3'
 
 type GridItem = {
@@ -78,13 +80,13 @@ const slide2Items: GridItem[] = [
   {
     id: 6,
     type: 'image',
-    imageSrc: ace55_2,
+    imageSrc: reviewImg3,
     spanClasses: 'col-span-1 row-span-2'
   },
   {
     id: 7,
     type: 'text',
-    content: '500+ Happy Guests',
+    content: '1M+ Happy Guests',
     bgColor: 'bg-white',
     textColor: 'text-gray-800',
     spanClasses: 'col-span-1 row-span-1'
@@ -133,25 +135,14 @@ const slide4Items: GridItem[] = [
 
 // Slide 5: img 2x2 + 4 testimonials (10,11,12,13)
 const slide5Items: GridItem[] = [
-  { id: 22, type: 'image', imageSrc: aceVK_2, spanClasses: 'col-span-2 row-span-2' },
+  { id: 22, type: 'image', imageSrc: reviewImg2, spanClasses: 'col-span-2 row-span-2' },
   { id: 23, type: 'testimonial', spanClasses: 'col-span-1 row-span-1', reviewIndex: 10 },
   { id: 24, type: 'testimonial', spanClasses: 'col-span-1 row-span-1', reviewIndex: 11 },
   { id: 25, type: 'testimonial', spanClasses: 'col-span-1 row-span-1', reviewIndex: 12 },
   { id: 26, type: 'testimonial', spanClasses: 'col-span-1 row-span-1', reviewIndex: 13 }
 ]
 
-// Slide 6: img 1x2, text, img 1x1, award 1x1, 3 testimonials (14,15,16)
-const slide6Items: GridItem[] = [
-  { id: 27, type: 'image', imageSrc: ace55_2, spanClasses: 'col-span-1 row-span-2' },
-  { id: 28, type: 'text', content: '6+ Years Experience', bgColor: 'bg-white', textColor: 'text-gray-800', spanClasses: 'col-span-1 row-span-1' },
-  { id: 29, type: 'image', imageSrc: ace57_1, spanClasses: 'col-span-1 row-span-1' },
-  { id: 30, type: 'award', awardTitle: 'Best Hotel Chain for Customer Satisfaction 2023', awardSubtitle: 'Hospitality Leaders Awards', bgColor: BRAND_BLUE, textColor: 'text-white', spanClasses: 'col-span-1 row-span-1' },
-  { id: 31, type: 'testimonial', spanClasses: 'col-span-1 row-span-1', reviewIndex: 14 },
-  { id: 32, type: 'testimonial', spanClasses: 'col-span-1 row-span-1', reviewIndex: 15 },
-  { id: 33, type: 'testimonial', spanClasses: 'col-span-1 row-span-1', reviewIndex: 16 }
-]
-
-const slides = [slide1Items, slide2Items, slide3Items, slide4Items, slide5Items, slide6Items]
+const slides = [slide1Items, slide2Items, slide3Items, slide4Items, slide5Items]
 
 type GuestReview = {
   id: number
@@ -364,7 +355,7 @@ const BentoGridShowcase: React.FC = () => {
     switch (item.type) {
       case 'image':
         return (
-          <div className="relative overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl h-full w-full">
+          <div className="overflow-hidden relative w-full h-full rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
             <img
               src={item.imageSrc}
               alt={`ACE STAYZ property ${item.id}`}
@@ -387,11 +378,11 @@ const BentoGridShowcase: React.FC = () => {
         const reviewText = review?.text ?? item.reviewText ?? ''
         const reviewerName = review?.name ?? item.reviewerName ?? ''
         return (
-          <div className="flex flex-col justify-center rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl p-5 md:p-6 overflow-hidden h-full w-full bg-white text-gray-800">
+          <div className="flex overflow-hidden flex-col justify-center p-5 w-full h-full text-gray-800 bg-white rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl md:p-6">
             <img
               src="https://logos-world.net/wp-content/uploads/2020/09/Google-Logo.png"
               alt="Google"
-              className="object-contain w-16 h-6 mb-2 flex-shrink-0"
+              className="object-contain flex-shrink-0 mb-2 w-16 h-6"
             />
             <div className="flex gap-0.5 mb-2 flex-shrink-0" aria-label={`${rating} stars`}>
               {Array.from({ length: 5 }).map((_, i) => (
@@ -405,10 +396,10 @@ const BentoGridShowcase: React.FC = () => {
                 </svg>
               ))}
             </div>
-            <p className="text-sm leading-relaxed text-center line-clamp-4 mb-2 flex-1 min-h-0">
+            <p className="flex-1 mb-2 min-h-0 text-sm leading-relaxed text-center line-clamp-4">
               &ldquo;{reviewText}&rdquo;
             </p>
-            <p className="text-xs font-semibold text-gray-600 text-center flex-shrink-0">
+            <p className="flex-shrink-0 text-xs font-semibold text-center text-gray-600">
               — {reviewerName}
             </p>
           </div>
@@ -420,11 +411,11 @@ const BentoGridShowcase: React.FC = () => {
             className={`flex flex-col items-center justify-center rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl p-5 md:p-6 h-full w-full ${item.textColor}`}
             style={{ backgroundColor: item.bgColor }}
           >
-            <span className="text-4xl mb-2" aria-hidden>🏆</span>
-            <p className="text-sm font-bold leading-tight text-center line-clamp-2 mb-1">
+            <span className="mb-2 text-4xl" aria-hidden>🏆</span>
+            <p className="mb-1 text-sm font-bold leading-tight text-center line-clamp-2">
               {item.awardTitle}
             </p>
-            <p className="text-xs opacity-90 text-center">{item.awardSubtitle}</p>
+            <p className="text-xs text-center opacity-90">{item.awardSubtitle}</p>
           </div>
         )
       default:
@@ -433,7 +424,7 @@ const BentoGridShowcase: React.FC = () => {
   }
 
   return (
-    <section className="w-full px-4 py-20 bg-gray-50 sm:px-6 lg:px-8">
+    <section className="px-4 py-20 w-full bg-gray-50 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <header className="mb-12 text-center md:mb-16">
@@ -461,8 +452,8 @@ const BentoGridShowcase: React.FC = () => {
             aria-label="Previous slide"
             className={`order-2 sm:order-1 flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center border transition-all duration-200 sm:w-14 sm:h-14 ${
               canGoPrevious
-                ? 'bg-white text-gray-700 border-gray-200 shadow-lg hover:shadow-xl hover:scale-105'
-                : 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-100'
+                ? 'text-gray-700 bg-white border-gray-200 shadow-lg hover:shadow-xl hover:scale-105'
+                : 'text-gray-400 bg-gray-100 border-gray-100 cursor-not-allowed'
             }`}
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -472,14 +463,14 @@ const BentoGridShowcase: React.FC = () => {
 
           <div
             ref={containerRef}
-            className="order-1 sm:order-2 flex-1 min-w-0 overflow-hidden rounded-2xl bg-white shadow-xl"
+            className="overflow-hidden flex-1 order-1 min-w-0 bg-white rounded-2xl shadow-xl sm:order-2"
           >
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {slides.map((items, slideIndex) => (
-                <div key={slideIndex} className="w-full flex-shrink-0 px-4 py-6 sm:px-6 sm:py-8">
+                <div key={slideIndex} className="flex-shrink-0 px-4 py-6 w-full sm:px-6 sm:py-8">
                   <div
                     className="grid grid-cols-4 grid-rows-2 gap-4 sm:gap-6 auto-rows-fr min-h-[420px] sm:min-h-[480px] lg:min-h-[520px]"
                   >
@@ -501,8 +492,8 @@ const BentoGridShowcase: React.FC = () => {
             aria-label="Next slide"
             className={`order-3 flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center border transition-all duration-200 sm:w-14 sm:h-14 ${
               canGoNext
-                ? 'bg-white text-gray-700 border-gray-200 shadow-lg hover:shadow-xl hover:scale-105'
-                : 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-100'
+                ? 'text-gray-700 bg-white border-gray-200 shadow-lg hover:shadow-xl hover:scale-105'
+                : 'text-gray-400 bg-gray-100 border-gray-100 cursor-not-allowed'
             }`}
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -513,7 +504,7 @@ const BentoGridShowcase: React.FC = () => {
 
         {/* Slide indicators */}
         {totalSlides > 1 && (
-          <div className="flex justify-center gap-2 mt-8" aria-hidden>
+          <div className="flex gap-2 justify-center mt-8" aria-hidden>
             {slides.map((_, i) => (
               <button
                 key={i}

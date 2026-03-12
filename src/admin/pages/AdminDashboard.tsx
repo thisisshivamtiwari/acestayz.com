@@ -593,15 +593,6 @@ const AdminDashboard: React.FC = () => {
             </tbody>
           </table>
         </div>
-        <div className="p-6 border-t border-gray-200">
-          <a
-            href="/admin/bookings"
-            className="text-sm font-medium"
-            style={{ color: '#4B9CD3' }}
-          >
-            View all bookings +
-          </a>
-        </div>
       </div>
     </div>
   )
